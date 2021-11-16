@@ -3,6 +3,7 @@
 *   @github:chairc
 *   @time:2020-1-22 03:14:03
 */
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -34,7 +35,7 @@ void ReadFileIndex(){
 	int n=0,i;
 	in=fopen("index.txt","r");
 	if(!in){
-		printf("ÎÄ¼şÒì³££¡\n");
+		printf("æ–‡ä»¶å¼‚å¸¸ï¼\n");
 		return;
 	}
 	while(!feof(in)){
@@ -74,7 +75,7 @@ void WriteFileIndex(const char *filename,int flag){
 				//printf("i=%d;name=%s;filename=%s\n",i,name,filename);
 				in=fopen("index.txt","r+");
 				if(!in){
-					printf("ÎÄ¼şÒì³££¡\n");
+					printf("æ–‡ä»¶å¼‚å¸¸ï¼\n");
 					return;
 				}
 				//printf("ch=%s\n",ch);
@@ -86,7 +87,7 @@ void WriteFileIndex(const char *filename,int flag){
 		}
 		in=fopen("index.txt","w");
 		if(!in){
-			printf("ÎÄ¼şÒì³££¡\n");
+			printf("æ–‡ä»¶å¼‚å¸¸ï¼\n");
 			return;
 		}
 		for(i=0;i<indexnum;i++){
@@ -95,7 +96,7 @@ void WriteFileIndex(const char *filename,int flag){
 	}else if(flag==0){
 		in=fopen("index.txt","a+");
 		if(!in){
-			printf("ÎÄ¼şÒì³££¡\n");
+			printf("æ–‡ä»¶å¼‚å¸¸ï¼\n");
 			return;
 		}
 		fprintf(in,"%s %s %s\n",filename,ch,ch);
@@ -107,22 +108,22 @@ void CreateFile(){
 	char filename[filenameLength],extendedname[20];
 	int flag=0;
 	FILE *fp;	
-	//printf("ÇëÊäÈë´´½¨µÄÎÄ¼şÃû£º");
+	//printf("è¯·è¾“å…¥åˆ›å»ºçš„æ–‡ä»¶åï¼š");
 	scanf("%s",filename);
-	//printf("ÇëÊäÈë´´½¨µÄÍØÕ¹Ãû£º");
+	//printf("è¯·è¾“å…¥åˆ›å»ºçš„æ‹“å±•åï¼š");
 	//scanf("%s",extendedname);
 	//char *namecat=(char*)malloc(strlen(filename)+strlen(extendedname)+INC);
 	//sprintf(namecat,"%s.%s",filename,extendedname);
 	//fp=fopen(namecat,"w");
 	fp=fopen(filename,"w");
 	if(!fp){
-		printf("ÎÄ¼ş´´½¨Òì³££¡\n");
+		printf("æ–‡ä»¶åˆ›å»ºå¼‚å¸¸ï¼\n");
 		return;
 	}
 	fclose(fp);
-	//printf("ÎÄ¼ş%s.%s´´½¨³É¹¦£¡\n",filename,extendedname);
+	//printf("æ–‡ä»¶%s.%såˆ›å»ºæˆåŠŸï¼\n",filename,extendedname);
 	//WriteFileIndex(namecat,flag);
-	printf("ÎÄ¼ş%s´´½¨³É¹¦£¡\n",filename);
+	printf("æ–‡ä»¶%såˆ›å»ºæˆåŠŸï¼\n",filename);
 	WriteFileIndex(filename,flag);
 }
 
@@ -131,10 +132,10 @@ void DeleteFile(){
 	FILE *in;
 	int i,j;
 	char filename[filenameLength],extendedname[20];
-	//printf("ÇëÊäÈëÉ¾³ıµÄÎÄ¼şÃû£º");
+	//printf("è¯·è¾“å…¥åˆ é™¤çš„æ–‡ä»¶åï¼š");
 	scanf("%s",filename);
 	if(remove(filename)==0){
-		printf("ÎÄ¼ş%sÉ¾³ı³É¹¦£¡\n",filename);
+		printf("æ–‡ä»¶%såˆ é™¤æˆåŠŸï¼\n",filename);
 		char *name=(char*)malloc(strlen(filename)+INC);
 		for(i=0;i<indexnum;i++){
 			strcpy(name,ind[i].filename);
@@ -148,7 +149,7 @@ void DeleteFile(){
 		}
 		in=fopen("index.txt","w");
 		if(!in){
-			printf("ÎÄ¼şÒì³££¡\n");
+			printf("æ–‡ä»¶å¼‚å¸¸ï¼\n");
 			return;
 		}
 		for(i=0;i<indexnum-1;i++){
@@ -157,7 +158,7 @@ void DeleteFile(){
 		indexnum=indexnum-1;
 		fclose(in);
 	}else{
-		printf("ÎÄ¼ş%sÉ¾³ıÊ§°Ü£¡\n",filename);
+		printf("æ–‡ä»¶%såˆ é™¤å¤±è´¥ï¼\n",filename);
 	}
 }
 
@@ -166,11 +167,11 @@ void ReadFile(){
  	Buf a[num];
 	int n=0,i;
 	FILE *fp;
-	//printf("ÇëÊäÈë¶ÁÈ¡µÄÎÄ¼şÃû£º");
+	//printf("è¯·è¾“å…¥è¯»å–çš„æ–‡ä»¶åï¼š");
 	scanf("%s",filename);
 	fp=fopen(filename,"r");
 	if(!fp){
-		printf("ÎÄ¼şÒì³££¡\n");
+		printf("æ–‡ä»¶å¼‚å¸¸ï¼\n");
 		return;
 	}
 	while(!feof(fp)){
@@ -189,13 +190,13 @@ void WriteFile(){
  	Buf a[num];
 	int i,flag=1;
 	FILE *fp;
-	//printf("ÇëÊäÈëĞ´ÈëµÄÎÄ¼şÃû£º");
+	//printf("è¯·è¾“å…¥å†™å…¥çš„æ–‡ä»¶åï¼š");
 	scanf("%s",filename);
-	//printf("ÇëÊäÈëĞ´ÈëµÄÎÄ¼şÌõÊı£º");
+	//printf("è¯·è¾“å…¥å†™å…¥çš„æ–‡ä»¶æ¡æ•°ï¼š");
 	scanf("%d",&filenum);
 	fp=fopen(filename,"r+");
 	if(!fp){
-		printf("ÎÄ¼şÒì³££¡\n");
+		printf("æ–‡ä»¶å¼‚å¸¸ï¼\n");
 		return;
 	}
 	for(i=0;i<filenum;i++){
@@ -210,11 +211,11 @@ void ReadFile1(){
 	char filename[filenameLength],buf[100];
 	int n=0,ch,i;
 	FILE *fp;
-	//printf("ÇëÊäÈë¶ÁÈ¡µÄÎÄ¼şÃû£º");
+	//printf("è¯·è¾“å…¥è¯»å–çš„æ–‡ä»¶åï¼š");
 	scanf("%s",filename);
 	fp=fopen(filename,"r");	
 	if(!fp){
-		printf("ÎÄ¼şÒì³££¡\n");
+		printf("æ–‡ä»¶å¼‚å¸¸ï¼\n");
 		return;
 	}	
 	fread(buf,1,bufLength+1,fp);
@@ -226,11 +227,11 @@ void WriteFile1(){
 	char filename[filenameLength],buf[100];
 	int i,flag=1;
 	FILE *fp;	
-	//printf("ÇëÊäÈëĞ´ÈëµÄÎÄ¼şÃû£º");
+	//printf("è¯·è¾“å…¥å†™å…¥çš„æ–‡ä»¶åï¼š");
 	scanf("%s",filename);
 	fp=fopen(filename,"r+");
 	if(!fp){
-		printf("ÎÄ¼şÒì³££¡\n");
+		printf("æ–‡ä»¶å¼‚å¸¸ï¼\n");
 		return;
 	}
 	scanf("%s",buf);
@@ -244,22 +245,22 @@ void CopyFile(){
 	ReadFileIndex();
 	int flag=0,i,j;
 	char copyname[filenameLength],pastename[filenameLength];
-	//printf("ÇëÊäÈëÄãÒª¸´ÖÆµÄÎÄ¼şÃû£º");
+	//printf("è¯·è¾“å…¥ä½ è¦å¤åˆ¶çš„æ–‡ä»¶åï¼š");
 	scanf("%s",copyname);
-	//printf("ÇëÊäÈëÄãÒªÕ³ÌùºóµÄÎÄ¼şÃû£º");
+	//printf("è¯·è¾“å…¥ä½ è¦ç²˜è´´åçš„æ–‡ä»¶åï¼š");
 	scanf("%s",pastename);
 
-	FILE *fpcopy;  // Ö¸ÏòÒª¸´ÖÆµÄÎÄ¼ş
-	FILE *fppaste;  // Ö¸Ïò¸´ÖÆºóµÄÎÄ¼ş
+	FILE *fpcopy;  // æŒ‡å‘è¦å¤åˆ¶çš„æ–‡ä»¶
+	FILE *fppaste;  // æŒ‡å‘å¤åˆ¶åçš„æ–‡ä»¶
 	FILE *in;
-	int bufferLen=1024*4;  // »º³åÇø³¤¶È
-	char *buffer=(char*)malloc(bufferLen);  // ¿ª±Ù»º´æ
-	int readCount;  // Êµ¼Ê¶ÁÈ¡µÄ×Ö½ÚÊı
+	int bufferLen=1024*4;  // ç¼“å†²åŒºé•¿åº¦
+	char *buffer=(char*)malloc(bufferLen);  // å¼€è¾Ÿç¼“å­˜
+	int readCount;  // å®é™…è¯»å–çš„å­—èŠ‚æ•°
 	if((fpcopy=fopen(copyname,"rb"))==NULL||(fppaste=fopen(pastename,"wb"))==NULL){
- 		printf("¸´ÖÆÎÄ¼şÒì³££¡\n");
+ 		printf("å¤åˆ¶æ–‡ä»¶å¼‚å¸¸ï¼\n");
 		return;
 	}
-	// ²»¶Ï´ÓfileRead¶ÁÈ¡ÄÚÈİ£¬·ÅÔÚ»º³åÇø£¬ÔÙ½«»º³åÇøµÄÄÚÈİĞ´ÈëfileWrite
+	// ä¸æ–­ä»fileReadè¯»å–å†…å®¹ï¼Œæ”¾åœ¨ç¼“å†²åŒºï¼Œå†å°†ç¼“å†²åŒºçš„å†…å®¹å†™å…¥fileWrite
 	while((readCount=fread(buffer,1,bufferLen,fpcopy))>0){
 		fwrite(buffer,readCount,1,fppaste);
 	}
@@ -275,22 +276,22 @@ void CutFile(){
 	ReadFileIndex();
 	int flag=0,i,j;
 	char copyname[filenameLength],pastename[filenameLength];
-	//printf("ÇëÊäÈëÄãÒª¸´ÖÆµÄÎÄ¼şÃû£º");
+	//printf("è¯·è¾“å…¥ä½ è¦å¤åˆ¶çš„æ–‡ä»¶åï¼š");
 	scanf("%s",copyname);
-	//printf("ÇëÊäÈëÄãÒªÕ³ÌùºóµÄÎÄ¼şÃû£º");
+	//printf("è¯·è¾“å…¥ä½ è¦ç²˜è´´åçš„æ–‡ä»¶åï¼š");
 	scanf("%s",pastename);
 
-	FILE *fpcopy;  // Ö¸ÏòÒª¸´ÖÆµÄÎÄ¼ş
-	FILE *fppaste;  // Ö¸Ïò¸´ÖÆºóµÄÎÄ¼ş
+	FILE *fpcopy;  // æŒ‡å‘è¦å¤åˆ¶çš„æ–‡ä»¶
+	FILE *fppaste;  // æŒ‡å‘å¤åˆ¶åçš„æ–‡ä»¶
 	FILE *in;
-	int bufferLen=1024*4;  // »º³åÇø³¤¶È
-	char *buffer=(char*)malloc(bufferLen);  // ¿ª±Ù»º´æ
-	int readCount;  // Êµ¼Ê¶ÁÈ¡µÄ×Ö½ÚÊı
+	int bufferLen=1024*4;  // ç¼“å†²åŒºé•¿åº¦
+	char *buffer=(char*)malloc(bufferLen);  // å¼€è¾Ÿç¼“å­˜
+	int readCount;  // å®é™…è¯»å–çš„å­—èŠ‚æ•°
 	if((fpcopy=fopen(copyname,"rb"))==NULL||(fppaste=fopen(pastename,"wb"))==NULL){
- 		printf("¸´ÖÆÎÄ¼şÒì³££¡\n");
+ 		printf("å¤åˆ¶æ–‡ä»¶å¼‚å¸¸ï¼\n");
 		return;
 	}
-	// ²»¶Ï´ÓfileRead¶ÁÈ¡ÄÚÈİ£¬·ÅÔÚ»º³åÇø£¬ÔÙ½«»º³åÇøµÄÄÚÈİĞ´ÈëfileWrite
+	// ä¸æ–­ä»fileReadè¯»å–å†…å®¹ï¼Œæ”¾åœ¨ç¼“å†²åŒºï¼Œå†å°†ç¼“å†²åŒºçš„å†…å®¹å†™å…¥fileWrite
 	while((readCount=fread(buffer,1,bufferLen,fpcopy))>0){
 		fwrite(buffer,readCount,1,fppaste);
 	}
@@ -299,7 +300,7 @@ void CutFile(){
 	fclose(fppaste);
 
 	if(remove(copyname)==0){
-		printf("ÎÄ¼ş%sÉ¾³ı³É¹¦£¡\n",copyname);
+		printf("æ–‡ä»¶%såˆ é™¤æˆåŠŸï¼\n",copyname);
 		char *name=(char*)malloc(strlen(copyname)+INC);
 		for(i=0;i<indexnum;i++){
 			strcpy(name,ind[i].filename);
@@ -313,7 +314,7 @@ void CutFile(){
 		}
 		in=fopen("index.txt","w");
 		if(!in){
-			printf("ÎÄ¼şÒì³££¡\n");
+			printf("æ–‡ä»¶å¼‚å¸¸ï¼\n");
 			return;
 		}
 		for(i=0;i<indexnum-1;i++){
@@ -322,7 +323,7 @@ void CutFile(){
 		indexnum=indexnum-1;
 		fclose(in);
 	}else{
-		printf("ÎÄ¼ş%sÉ¾³ıÊ§°Ü£¡\n",copyname);
+		printf("æ–‡ä»¶%såˆ é™¤å¤±è´¥ï¼\n",copyname);
 	}
 	WriteFileIndex(pastename,flag);
 
@@ -330,60 +331,60 @@ void CutFile(){
 }
 
 void Help(){
-	printf("Ö¸Áî: \n\
-	ll     ---  ÏÔÊ¾ÎÄ¼şÄ¿Â¼\n\
-	crf    ---  ´´½¨ÎÄ¼ş\n\
-	del    ---  É¾³ıÎÄ¼ş\n\
-	read   ---  ¶ÁÎÄ¼ş\n\
-	write  ---  Ğ´ÎÄ¼ş\n\
-	reads  ---  ¶àÌõ¶ÁÎÄ¼ş#²âÊÔ#\n\
-	writes ---  ¶àÌõĞ´ÎÄ¼ş#²âÊÔ#\n\
-	copy   ---  ¸´ÖÆÎÄ¼ş\n\
-	cut    ---  ¼ôÇĞÎÄ¼ş\n\
-	help   ---  °ïÖú\n\
-	helpall---  ËùÓĞÏêÏ¸°ïÖú\n\
-	man    ---  Ö¸Áî°ïÖú\n\
-	exitf  ---  ÍË³ö\n\
-	ÏêÏ¸Ö¸ÁîÇëÊäÈëhelpall\n");
+	printf("æŒ‡ä»¤: \n\
+	ll     ---  æ˜¾ç¤ºæ–‡ä»¶ç›®å½•\n\
+	crf    ---  åˆ›å»ºæ–‡ä»¶\n\
+	del    ---  åˆ é™¤æ–‡ä»¶\n\
+	read   ---  è¯»æ–‡ä»¶\n\
+	write  ---  å†™æ–‡ä»¶\n\
+	reads  ---  å¤šæ¡è¯»æ–‡ä»¶#æµ‹è¯•#\n\
+	writes ---  å¤šæ¡å†™æ–‡ä»¶#æµ‹è¯•#\n\
+	copy   ---  å¤åˆ¶æ–‡ä»¶\n\
+	cut    ---  å‰ªåˆ‡æ–‡ä»¶\n\
+	help   ---  å¸®åŠ©\n\
+	helpall---  æ‰€æœ‰è¯¦ç»†å¸®åŠ©\n\
+	man    ---  æŒ‡ä»¤å¸®åŠ©\n\
+	exitf  ---  é€€å‡º\n\
+	è¯¦ç»†æŒ‡ä»¤è¯·è¾“å…¥helpall\n");
 }
 
 void HelpAll(){
-	printf("Ö¸Áî: \n\
+	printf("æŒ‡ä»¤: \n\
 	=====================\n\
-	ll     ---  ÏÔÊ¾ÎÄ¼şÄ¿Â¼\n\
+	ll     ---  æ˜¾ç¤ºæ–‡ä»¶ç›®å½•\n\
 	=====================\n\
-	crf    ---  ´´½¨ÎÄ¼ş\n\
-	Ê¹ÓÃ·½·¨£ºcrf + ÎÄ¼şÃû\n\
+	crf    ---  åˆ›å»ºæ–‡ä»¶\n\
+	ä½¿ç”¨æ–¹æ³•ï¼šcrf + æ–‡ä»¶å\n\
 	=====================\n\
-	del    ---  É¾³ıÎÄ¼ş\n\
-	Ê¹ÓÃ·½·¨£ºdel + ÎÄ¼şÃû\n\
+	del    ---  åˆ é™¤æ–‡ä»¶\n\
+	ä½¿ç”¨æ–¹æ³•ï¼šdel + æ–‡ä»¶å\n\
 	=====================\n\
-	read   ---  ¶ÁÎÄ¼ş\n\
-	Ê¹ÓÃ·½·¨£ºread + ÎÄ¼şÃû\n\
+	read   ---  è¯»æ–‡ä»¶\n\
+	ä½¿ç”¨æ–¹æ³•ï¼šread + æ–‡ä»¶å\n\
 	=====================\n\
-	write  ---  Ğ´ÎÄ¼ş\n\
-	Ê¹ÓÃ·½·¨£ºwrite + ÎÄ¼şÃû\n\
+	write  ---  å†™æ–‡ä»¶\n\
+	ä½¿ç”¨æ–¹æ³•ï¼šwrite + æ–‡ä»¶å\n\
 	=====================\n\
-	reads  ---  ¶àÌõ¶ÁÎÄ¼ş#²âÊÔ#\n\
-	Ê¹ÓÃ·½·¨£ºreads + ÎÄ¼şÃû\n\
+	reads  ---  å¤šæ¡è¯»æ–‡ä»¶#æµ‹è¯•#\n\
+	ä½¿ç”¨æ–¹æ³•ï¼šreads + æ–‡ä»¶å\n\
 	=====================\n\
-	writes ---  ¶àÌõĞ´ÎÄ¼ş#²âÊÔ#\n\
-	Ê¹ÓÃ·½·¨£ºwrites + ÎÄ¼şÃû + ÌõÊı\n\
+	writes ---  å¤šæ¡å†™æ–‡ä»¶#æµ‹è¯•#\n\
+	ä½¿ç”¨æ–¹æ³•ï¼šwrites + æ–‡ä»¶å + æ¡æ•°\n\
 	=====================\n\
-	copy   ---  ¸´ÖÆÎÄ¼ş\n\
-	Ê¹ÓÃ·½·¨£ºcopy + ĞÂÎÄ¼şÃû + ¾ÉÎÄ¼şÃû\n\
+	copy   ---  å¤åˆ¶æ–‡ä»¶\n\
+	ä½¿ç”¨æ–¹æ³•ï¼šcopy + æ–°æ–‡ä»¶å + æ—§æ–‡ä»¶å\n\
 	=====================\n\
-	cut    ---   ¼ôÇĞÎÄ¼ş\n\
-	Ê¹ÓÃ·½·¨£ºcut + ĞÂÎÄ¼şÃû + ¾ÉÎÄ¼şÃû\n\
+	cut    ---   å‰ªåˆ‡æ–‡ä»¶\n\
+	ä½¿ç”¨æ–¹æ³•ï¼šcut + æ–°æ–‡ä»¶å + æ—§æ–‡ä»¶å\n\
 	=====================\n\
-	help   ---  °ïÖú\n\
+	help   ---  å¸®åŠ©\n\
 	=====================\n\
-	helpall---  ËùÓĞÏêÏ¸°ïÖú\n\
+	helpall---  æ‰€æœ‰è¯¦ç»†å¸®åŠ©\n\
 	=====================\n\
-	man    ---  Ö¸Áî°ïÖú\n\
-	Ê¹ÓÃ·½·¨£ºman + Ö¸Áî\n\
+	man    ---  æŒ‡ä»¤å¸®åŠ©\n\
+	ä½¿ç”¨æ–¹æ³•ï¼šman + æŒ‡ä»¤\n\
 	=====================\n\
-	exitf  ---  ÍË³ö\n\
+	exitf  ---  é€€å‡º\n\
 	=====================\n");
 }
 
@@ -394,89 +395,89 @@ void Man(){
 		case 0:
 			printf("\n\
 			=====================\n\
-			ll     ---  ÏÔÊ¾ÎÄ¼şÄ¿Â¼\n\
-			Ê¹ÓÃ·½·¨£ºÖ±½ÓÊäÈë\n\
+			ll     ---  æ˜¾ç¤ºæ–‡ä»¶ç›®å½•\n\
+			ä½¿ç”¨æ–¹æ³•ï¼šç›´æ¥è¾“å…¥\n\
 			=====================\n");
 			break;
 		case 1:
 			printf("\n\
 			=====================\n\
-			crf    ---  ´´½¨ÎÄ¼ş\n\
-			Ê¹ÓÃ·½·¨£ºcrf + ÎÄ¼şÃû\n\
+			crf    ---  åˆ›å»ºæ–‡ä»¶\n\
+			ä½¿ç”¨æ–¹æ³•ï¼šcrf + æ–‡ä»¶å\n\
 			=====================\n");
 			break;
 		case 2:
 			printf("\n\
 			=====================\n\
-			del    ---  É¾³ıÎÄ¼ş\n\
-			Ê¹ÓÃ·½·¨£ºdel + ÎÄ¼şÃû\n\
+			del    ---  åˆ é™¤æ–‡ä»¶\n\
+			ä½¿ç”¨æ–¹æ³•ï¼šdel + æ–‡ä»¶å\n\
 			=====================\n");
 			break;
 		case 3:
 			printf("\n\
 			=====================\n\
-			read   ---  ¶ÁÎÄ¼ş\n\
-			Ê¹ÓÃ·½·¨£ºread + ÎÄ¼şÃû\n\
+			read   ---  è¯»æ–‡ä»¶\n\
+			ä½¿ç”¨æ–¹æ³•ï¼šread + æ–‡ä»¶å\n\
 			=====================\n");
 			break;
 		case 4:
 			printf("\n\
 			=====================\n\
-			write  ---  Ğ´ÎÄ¼ş\n\
-			Ê¹ÓÃ·½·¨£ºwrite + ÎÄ¼şÃû\n\
+			write  ---  å†™æ–‡ä»¶\n\
+			ä½¿ç”¨æ–¹æ³•ï¼šwrite + æ–‡ä»¶å\n\
 			=====================\n");
 			break;
 		case 5:
 			printf("\n\
 			=====================\n\
-			reads  ---  ¶àÌõ¶ÁÎÄ¼ş#²âÊÔ#\n\
-			Ê¹ÓÃ·½·¨£ºreads + ÎÄ¼şÃû\n\
+			reads  ---  å¤šæ¡è¯»æ–‡ä»¶#æµ‹è¯•#\n\
+			ä½¿ç”¨æ–¹æ³•ï¼šreads + æ–‡ä»¶å\n\
 			=====================\n");
 			break;
 		case 6:
 			printf("\n\
 			=====================\n\
-			writes ---  ¶àÌõĞ´ÎÄ¼ş#²âÊÔ#\n\
-			Ê¹ÓÃ·½·¨£ºwrites + ÎÄ¼şÃû + ÌõÊı\n\
+			writes ---  å¤šæ¡å†™æ–‡ä»¶#æµ‹è¯•#\n\
+			ä½¿ç”¨æ–¹æ³•ï¼šwrites + æ–‡ä»¶å + æ¡æ•°\n\
 			=====================\n");
 			break;
 		case 7:
 			printf("\n\
 			=====================\n\
-			copy   ---  ¸´ÖÆÎÄ¼ş\n\
-			Ê¹ÓÃ·½·¨£ºcopy + ĞÂÎÄ¼şÃû + ¾ÉÎÄ¼şÃû\n\
+			copy   ---  å¤åˆ¶æ–‡ä»¶\n\
+			ä½¿ç”¨æ–¹æ³•ï¼šcopy + æ–°æ–‡ä»¶å + æ—§æ–‡ä»¶å\n\
 			=====================\n");
 			break;
 		case 8:
         	printf("\n\
 			=====================\n\
-			cut   ---   ¼ôÇĞÎÄ¼ş\n\
-			Ê¹ÓÃ·½·¨£ºcut + ĞÂÎÄ¼şÃû + ¾ÉÎÄ¼şÃû\n\
+			cut   ---   å‰ªåˆ‡æ–‡ä»¶\n\
+			ä½¿ç”¨æ–¹æ³•ï¼šcut + æ–°æ–‡ä»¶å + æ—§æ–‡ä»¶å\n\
 			=====================\n");
         	break;
 		case 9:
 			printf("\n\
 			=====================\n\
-			help   ---  °ïÖú\n\
+			help   ---  å¸®åŠ©\n\
 			=====================\n");
 			break;
 		case 10:
 			printf("\n\
 			=====================\n\
-			helpall   ---  ËùÓĞÏêÏ¸°ïÖú\n\
+			helpall   ---  æ‰€æœ‰è¯¦ç»†å¸®åŠ©\n\
 			=====================\n");
 			break;
 		case 11:
 			printf("\n\
 			=====================\n\
-			man    ---  Ö¸Áî°ïÖú\n\
-			Ê¹ÓÃ·½·¨£ºman + Ö¸Áî\n\
+			man    ---  æŒ‡ä»¤å¸®åŠ©\n\
+			ä½¿ç”¨æ–¹æ³•ï¼šman + æŒ‡ä»¤\n\
 			=====================\n");
 			break;
 		case 12:
 			printf("\n\
 			=====================\n\
-			exitf  ---  ÍË³ö\n\
+			exitf  ---  é€€å‡º\n\
 			=====================\n");
 			break;
 	}
@@ -491,11 +492,11 @@ int Analyse(char *str){
 	argc=0;
 	for(i=0,p_char=str;*p_char!='\0';p_char++){
 		if(*p_char!=' '){
-			while(*p_char!=' '&&(*p_char!='\0')){   //ÒÀ´Î¶ÁÈëÊä½øÀ´µÄÊı
+			while(*p_char!=' '&&(*p_char!='\0')){   //ä¾æ¬¡è¯»å…¥è¾“è¿›æ¥çš„æ•°
 				temp[i++] = *p_char++;
 			}
 			argv[argc]=(char*)malloc(i+1);
-			strncpy(argv[argc],temp,i);     //°ÑtempËùÖ¸ÏòµÄ×Ö·û´®ÖĞÒÔtempµØÖ·¿ªÊ¼µÄÇ°i¸ö×Ö½Ú¸´ÖÆµ½argv[argc]ËùÖ¸µÄÊı×éÖĞ£¬²¢·µ»Ø±»¸´ÖÆºóµÄargv[argc]¡£
+			strncpy(argv[argc],temp,i);     //æŠŠtempæ‰€æŒ‡å‘çš„å­—ç¬¦ä¸²ä¸­ä»¥tempåœ°å€å¼€å§‹çš„å‰iä¸ªå­—èŠ‚å¤åˆ¶åˆ°argv[argc]æ‰€æŒ‡çš„æ•°ç»„ä¸­ï¼Œå¹¶è¿”å›è¢«å¤åˆ¶åçš„argv[argc]ã€‚
 			argv[argc][i] ='\0';
 			argc++;
 			i=0;
