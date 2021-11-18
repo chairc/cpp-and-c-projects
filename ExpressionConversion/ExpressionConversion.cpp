@@ -16,16 +16,15 @@ typedef struct BitNode{
     BitNode* rchild;
 }BitNode,*Bitree;
 
-/*Ê÷Õ»ADT*/
+/*æ ‘æ ˆADT*/
 typedef struct{
     Bitree *base;
     int top;
     int stacksize;
 }TreeStack;
 
-//Ëã·û¼äµÄÓÅÏÈ¹ØÏµ
+//ç®—ç¬¦é—´çš„ä¼˜å…ˆå…³ç³»
 char Con[7][7]={{'>','>','<','<','<','>','>'},{'>','>','<','<','<','>','>'},{'>','>','>','>','<','>','>'},{'>','>','>','>','<','>','>'},{'<','<','<','<','<','=',' '},{'>','>','>','>',' ','>','>'},{'<','<','<','<','<',' ','='}};
-
 
 void InitStack(SqStack &S){
 	S.base=(int*)malloc(StackInitSize*sizeof(int));
@@ -74,7 +73,7 @@ int GetTop(SqStack S){
 	return e;
 }
 
-/*Ê÷ÀàĞÍÕ»*/
+/*æ ‘ç±»å‹æ ˆ*/
 void TreeInitStack(TreeStack &S){
 	S.base=(Bitree*)malloc(StackInitSize*sizeof(Bitree));
     S.top=0;
@@ -105,7 +104,7 @@ void Push_t(TreeStack &S,Bitree e)
 }
 
 
-//ÖĞ×º±í´ïÊ½
+//ä¸­ç¼€è¡¨è¾¾å¼
 int Compare(char theta1,char theta2){
 	char op[7]={'+','-','*','/','(',')','#'};
 	int i,j;
@@ -137,26 +136,26 @@ int Operate(int a,char theta,int b){
 			if(b!=0){
 				return a/b;
 			}else{
-				printf("0²»ÄÜÎª³ıÊı£¡");
+				printf("0ä¸èƒ½ä¸ºé™¤æ•°ï¼");
 				return 0;
 			}
 	}
 }
 
-//¼ÆËãÖĞ×º±í´ïÊ½
+//è®¡ç®—ä¸­ç¼€è¡¨è¾¾å¼
 int EvaluateExpression(char *str){
-	//OPTRÎªËãÊı·ûºÅÕ»£¬OPNDÎª²Ù×÷ÊıÕ» 
+	//OPTRä¸ºç®—æ•°ç¬¦å·æ ˆï¼ŒOPNDä¸ºæ“ä½œæ•°æ ˆ 
 	SqStack OPTR,OPND;
 	char *p;
 	int num=0,ch,a,b,theta;
 	p=str;
 	InitStack(OPTR);
 	InitStack(OPND);
-	Push(OPTR,*p);      //'#'ÈëÕ»
+	Push(OPTR,*p);      //'#'å…¥æ ˆ
 	p++;
 	while(*p!='#'||GetTop(OPTR)!='#'){
 		if(*p>='0'&&*p<='9'){
-			num=0;      //pÖ¸ÏòÎª²Ù×÷Êı
+			num=0;      //pæŒ‡å‘ä¸ºæ“ä½œæ•°
 			while(*p!='#'&&*p>='0'&&*p<='9'){
 				num=num*10+*p-'0';
 				p++;
@@ -184,32 +183,32 @@ int EvaluateExpression(char *str){
 	return GetTop(OPND);
 }
 
-//´´½¨Ê÷
+//åˆ›å»ºæ ‘
 void CreateTree(char *str,Bitree &bt){
 	char *p;
 	Bitree m,n;
 	int num,a,b,ch,theta;
 	p=str;
-	SqStack OPTR;//ÔËËã·û
+	SqStack OPTR;//è¿ç®—ç¬¦
 	TreeStack OPND;
 	InitStack(OPTR);
 	TreeInitStack(OPND);
-	Push(OPTR,*p);      //'#'ÈëÕ»
+	Push(OPTR,*p);      //'#'å…¥æ ˆ
 	p++;
 	while(*p!='#'||GetTop(OPTR)!='#'){
 		if(*p>='0'&&*p<='9'){
-			num=0;      //pÖ¸ÏòÎª²Ù×÷Êı
+			num=0;      //pæŒ‡å‘ä¸ºæ“ä½œæ•°
 			while(*p!='#'&&*p>='0'&&*p<='9'){
-				num=num*10+(*p-'0');                //ÓÉÓÚÒ»´ÎÖ»ÄÜ´¦ÀíÒ»¸öÊı×Ö£¬ÕâÀïÊÇ½«³¬¹ıÒ»Î»ÊıµÄÖµ¼ÓÆğÀ´
+				num=num*10+(*p-'0');                //ç”±äºä¸€æ¬¡åªèƒ½å¤„ç†ä¸€ä¸ªæ•°å­—ï¼Œè¿™é‡Œæ˜¯å°†è¶…è¿‡ä¸€ä½æ•°çš„å€¼åŠ èµ·æ¥
 				p++;
 			}
-			bt=(Bitree)malloc(sizeof(BitNode));     //ÉêÇë½áµã
-			bt->data=num;                           //½«Êı·ÅÈë½áµãdataÖĞ
+			bt=(Bitree)malloc(sizeof(BitNode));     //ç”³è¯·ç»“ç‚¹
+			bt->data=num;                           //å°†æ•°æ”¾å…¥ç»“ç‚¹dataä¸­
 			bt->lchild=NULL;
 			bt->rchild=NULL;
-			Push_t(OPND,bt);                        //½«½áµãÑ¹ÈëÕ»ÖĞ
+			Push_t(OPND,bt);                        //å°†ç»“ç‚¹å‹å…¥æ ˆä¸­
 		}
-		switch(Compare(GetTop(OPTR),*p)){           //ÓÅÏÈ¼¶±È½Ï£¬·ûºÅÕ»Õ»¶¥ÔªËØºÍÊäÈë½øµÄÊı±È½Ï
+		switch(Compare(GetTop(OPTR),*p)){           //ä¼˜å…ˆçº§æ¯”è¾ƒï¼Œç¬¦å·æ ˆæ ˆé¡¶å…ƒç´ å’Œè¾“å…¥è¿›çš„æ•°æ¯”è¾ƒ
 			case '<':
 				Push(OPTR,*p);
 				p++;
@@ -219,22 +218,22 @@ void CreateTree(char *str,Bitree &bt){
 				p++;
 				break;
 			case '>':
-				    Pop_t(OPND,m);                  //Óöµ½ÓÅÏÈ¼¶´óµÄ·ûºÅÊ±£¬È¡³ö²Ù×÷ÊıÕ»µÄ×î¶¥ÉÏÁ½¸ö
+				    Pop_t(OPND,m);                  //é‡åˆ°ä¼˜å…ˆçº§å¤§çš„ç¬¦å·æ—¶ï¼Œå–å‡ºæ“ä½œæ•°æ ˆçš„æœ€é¡¶ä¸Šä¸¤ä¸ª
 					Pop_t(OPND,n);
 					Pop(OPTR,theta);
 					bt=(Bitree)malloc(sizeof(BitNode));
 					bt->data=theta;
-					bt->lchild=n;                   //ºóÈ¡³öµÄ·Å×ó×ÓÊ÷£¬ÏÈÈ¡³öµÄ·ÅÓÒ×ÓÊ÷
+					bt->lchild=n;                   //åå–å‡ºçš„æ”¾å·¦å­æ ‘ï¼Œå…ˆå–å‡ºçš„æ”¾å³å­æ ‘
 					bt->rchild=m;
 					Push_t(OPND,bt);
 					break;
 		}
 	}
 	bt=TreeGetTop(OPND);
-	printf("´´½¨¶ş²æÁ´±í³É¹¦£¡\n");
+	printf("åˆ›å»ºäºŒå‰é“¾è¡¨æˆåŠŸï¼\n");
 }
 
-//ÏÈĞò±éÀúµİ¹é
+//å…ˆåºéå†é€’å½’
 void PreOrderTraverse(Bitree bt){
 	if(bt){
 		if(bt->lchild||bt->rchild)
@@ -245,7 +244,7 @@ void PreOrderTraverse(Bitree bt){
 		PreOrderTraverse(bt->rchild);
 	}
 }
-//ºóĞò±éÀúµİ¹é
+//ååºéå†é€’å½’
 void PostOrderTraverse(Bitree bt){
 	if(bt){
 		PostOrderTraverse(bt->lchild);
@@ -262,15 +261,15 @@ int main(){
 	int result;
 	Bitree bt;
 	
-	printf("ÊäÈëÒ»¸öÖĞ×º±í´ïÊ½£º");
+	printf("è¾“å…¥ä¸€ä¸ªä¸­ç¼€è¡¨è¾¾å¼ï¼š");
 	gets(ch);
 	result=EvaluateExpression(ch);
 	printf("%d\n",result);
 	CreateTree(ch,bt);
-	printf("Ç°×º±í´ïÊ½Îª£º");
+	printf("å‰ç¼€è¡¨è¾¾å¼ä¸ºï¼š");
 	PreOrderTraverse(bt);
 	printf("\n");
-	printf("ºó×º±í´ïÊ½Îª£º");
+	printf("åç¼€è¡¨è¾¾å¼ä¸ºï¼š");
 	PostOrderTraverse(bt);
 	
 	return 0;
