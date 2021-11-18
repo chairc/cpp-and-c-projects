@@ -1,18 +1,18 @@
-#include <iostream>
+ï»¿#include <iostream>
 #include <string>
 #include<fstream>
 #include "grade.h"
 using namespace std;
 
 int grade_num;
-const char grade_url[100] = "../test/grade.txt";//grade³É¼¨±íÏà¶ÔÂ·¾¶
+const char grade_url[100] = "../test/grade.txt";//gradeæˆç»©è¡¨ç›¸å¯¹è·¯å¾„
 
 Grade::Grade(){
-	//cout<<"GradeÒÑ¹¹Ôì£¡"<<endl;
+	//cout<<"Gradeå·²æ„é€ ï¼"<<endl;
 }
 
 Grade::~Grade(){
-	//cout<<"GradeÒÑÎö¹¹£¡"<<endl;
+	//cout<<"Gradeå·²ææ„ï¼"<<endl;
 }
 
 void Grade::readFile(Grade *gra){
@@ -20,7 +20,7 @@ void Grade::readFile(Grade *gra){
 	int i = 0,flag = 0;
 	in.open(grade_url,ios::in);
 	if(!in){
-		ofstream fout(grade_url);//Ã»ÓĞÎÄ¼şÊ±´´½¨ÎÄ¼ş
+		ofstream fout(grade_url);//æ²¡æœ‰æ–‡ä»¶æ—¶åˆ›å»ºæ–‡ä»¶
 		if(fout){
 			fout.close();
 			flag = 1;
@@ -28,16 +28,16 @@ void Grade::readFile(Grade *gra){
 	}
 	if(flag != 1){
 		while(!in.eof() && flag != 1){
-	        in>>gra[i].id>>gra[i].name>>gra[i].subject>>gra[i].grade;//ÒÀ´Î¶ÁÈ¡txtÎÄ¼şÖĞÃ¿ĞĞµÄÊı¾İ
+	        in>>gra[i].id>>gra[i].name>>gra[i].subject>>gra[i].grade;//ä¾æ¬¡è¯»å–txtæ–‡ä»¶ä¸­æ¯è¡Œçš„æ•°æ®
 	        i++;
 	    }
-		grade_num = i - 1;//¼ÇÂ¼¹ÜÀíÔ±txtÎÄ¼şÖĞĞĞ×ÜÊı
+		grade_num = i - 1;//è®°å½•ç®¡ç†å‘˜txtæ–‡ä»¶ä¸­è¡Œæ€»æ•°
 	}
     in.close();
 }
 
 void Grade::showAll(Grade *gra){
-	cout<<"Ñ§ºÅ  "<<"ĞÕÃû  "<<"¿ÆÄ¿  "<<"³É¼¨  "<<endl;
+	cout<<"å­¦å·  "<<"å§“å  "<<"ç§‘ç›®  "<<"æˆç»©  "<<endl;
 	for(int i = 0;i<grade_num;i++){
 		cout<<gra[i].id<<" "<<gra[i].name<<" "<<gra[i].subject<<" "<<gra[i].grade<<endl;
 	}
@@ -46,29 +46,29 @@ void Grade::showAll(Grade *gra){
 void Grade::showOneStudentGrade(string id,Grade *gra){
 	for(int i = 0;i<grade_num;i++){
 		if(id == gra[i].id){
-			cout<<"Ñ§ºÅ£º"<<gra[i].id<<"\nĞÕÃû£º"<<gra[i].name<<"\n¿ÆÄ¿£º"<<gra[i].subject<<"\n³É¼¨£º"<<gra[i].grade<<endl;
+			cout<<"å­¦å·ï¼š"<<gra[i].id<<"\nå§“åï¼š"<<gra[i].name<<"\nç§‘ç›®ï¼š"<<gra[i].subject<<"\næˆç»©ï¼š"<<gra[i].grade<<endl;
 		}
 	}
 }
 
-/***************************³É¼¨¹ÜÀí***************************/
+/***************************æˆç»©ç®¡ç†***************************/
 
 ManageGrade::ManageGrade(){
-	//cout<<"ManageStudentÒÑ¹¹Ôì£¡"<<endl;
+	//cout<<"ManageStudentå·²æ„é€ ï¼"<<endl;
 }
 
 ManageGrade::~ManageGrade(){
-	//cout<<"ManageStudentÒÑÎö¹¹£¡"<<endl;
+	//cout<<"ManageStudentå·²ææ„ï¼"<<endl;
 }
 void ManageGrade::insertGrade(string id,string name,string subject,int grade,Grade *gra){
-	int flag = 0;//³É¼¨ÊÇ·ñ´æÔÚ±ê¼ÇÎ»
+	int flag = 0;//æˆç»©æ˜¯å¦å­˜åœ¨æ ‡è®°ä½
 	for(int i = 0;i < grade_num;i++){
 		if(id == gra[i].id && subject == gra[i].subject){
 			flag = 1;
 		}
 	}
 	if(flag == 0){
-		//½«id name sbject grade·ÅÈëstuÖĞ
+		//å°†id name sbject gradeæ”¾å…¥stuä¸­
 	 	gra[grade_num].id = id;
 		gra[grade_num].name = name;
 		gra[grade_num].subject = subject;
@@ -79,22 +79,22 @@ void ManageGrade::insertGrade(string id,string name,string subject,int grade,Gra
 			out<<gra[i].id<<" "<<gra[i].name<<" "<<gra[i].subject<<" "<<gra[i].grade<<"\n";
 		}
 		out.close();
-		cout<<"Ñ§Éú³É¼¨Ôö¼Ó³É¹¦£¡"<<endl;
+		cout<<"å­¦ç”Ÿæˆç»©å¢åŠ æˆåŠŸï¼"<<endl;
 		grade_num = grade_num + 1;
-		cout<<"Ñ§Éú³É¼¨Îª£º"<<grade_num<<"¸ö"<<endl;
+		cout<<"å­¦ç”Ÿæˆç»©ä¸ºï¼š"<<grade_num<<"ä¸ª"<<endl;
 	}else{
-		cout<<"Ñ§ºÅÎª"<<id<<"µÄÑ§Éú£º"<<name<<"³É¼¨´æÔÚ£¡³É¼¨Îª£º"<<grade<<endl;
+		cout<<"å­¦å·ä¸º"<<id<<"çš„å­¦ç”Ÿï¼š"<<name<<"æˆç»©å­˜åœ¨ï¼æˆç»©ä¸ºï¼š"<<grade<<endl;
 	}
 }
 
 void ManageGrade::deleteGrade(string id,string subject,Grade *gra){
-	int flag = 0;//1Îª³É¹¦ 0ÎªÊ§°Ü
-	cout<<"Ñ§Éú³É¼¨Îª£º"<<grade_num<<"¸ö"<<endl;
+	int flag = 0;//1ä¸ºæˆåŠŸ 0ä¸ºå¤±è´¥
+	cout<<"å­¦ç”Ÿæˆç»©ä¸ºï¼š"<<grade_num<<"ä¸ª"<<endl;
 	for(int i = 0;i<grade_num;i++){
 		if(id == gra[i].id && subject == gra[i].subject){
-			flag = 1;//²éÕÒ³É¹¦
+			flag = 1;//æŸ¥æ‰¾æˆåŠŸ
 			for(int j = i;j<grade_num;j++){
-				gra[j] = gra[j+1];//ºó·½µÄÒ»´ÎÏòÇ°ÒÆ¶¯Ò»¸ö
+				gra[j] = gra[j+1];//åæ–¹çš„ä¸€æ¬¡å‘å‰ç§»åŠ¨ä¸€ä¸ª
 			}
 		}
 	}
@@ -105,18 +105,18 @@ void ManageGrade::deleteGrade(string id,string subject,Grade *gra){
 		for(int i = 0;i<grade_num;i++){
 			out<<gra[i].id<<" "<<gra[i].name<<" "<<gra[i].subject<<" "<<gra[i].grade<<"\n";
 		}
-		cout<<"Ñ§Éú³É¼¨É¾³ı³É¹¦£¡"<<endl;
-		cout<<"Ñ§Éú³É¼¨Îª£º"<<grade_num<<"¸ö"<<endl;
+		cout<<"å­¦ç”Ÿæˆç»©åˆ é™¤æˆåŠŸï¼"<<endl;
+		cout<<"å­¦ç”Ÿæˆç»©ä¸ºï¼š"<<grade_num<<"ä¸ª"<<endl;
 		out.close();
 	}else{
-		cout<<"Ñ§Éú³É¼¨É¾³ıÊ§°Ü£¡"<<endl;
+		cout<<"å­¦ç”Ÿæˆç»©åˆ é™¤å¤±è´¥ï¼"<<endl;
 	}
 }
 
 void ManageGrade::updateGrade(string id,string name,string subject,int grade,Grade *gra){
-	int flag = 0;//¸üĞÂ³É¹¦Ê§°Ü±ê¼ÇÎ»
+	int flag = 0;//æ›´æ–°æˆåŠŸå¤±è´¥æ ‡è®°ä½
 	for(int i = 0;i < grade_num;i++){
-		if(id == gra[i].id && subject == gra[i].subject){//´Ë´¦×Ô¶¯Ñ°ÕÒ¿ÆÄ¿
+		if(id == gra[i].id && subject == gra[i].subject){//æ­¤å¤„è‡ªåŠ¨å¯»æ‰¾ç§‘ç›®
 			gra[i].id = id;
 			gra[i].name = name;
 			gra[i].subject = subject;
@@ -131,25 +131,25 @@ void ManageGrade::updateGrade(string id,string name,string subject,int grade,Gra
 			out<<gra[i].id<<" "<<gra[i].name<<" "<<gra[i].subject<<" "<<gra[i].grade<<"\n";
 		}
 		out.close();
-		cout<<"Ñ§Éú³É¼¨¸üĞÂ³É¹¦£¡"<<endl;
+		cout<<"å­¦ç”Ÿæˆç»©æ›´æ–°æˆåŠŸï¼"<<endl;
 	}else{
-		cout<<"Ñ§Éú³É¼¨¸üĞÂÊ§°Ü£¡"<<endl;
+		cout<<"å­¦ç”Ÿæˆç»©æ›´æ–°å¤±è´¥ï¼"<<endl;
 	}
 }
 
 void ManageGrade::sortStudentByGrade(string subject,Grade *gra,const int NUM){
-	int flag = 0;//Ñ§¿ÆÊÇ·ñ´æÔÚ±ê¼ÇÎ»
-	Grade gra_new[NUM];//³õÊ¼»¯Ò»¸öĞÂµÄ¶ÔÏóÊı×é£¬ÒÔ±£Ö¤ÅÅĞòÊ±²»»á¸²¸ÇÔ­¶ÔÏóÊı×é
+	int flag = 0;//å­¦ç§‘æ˜¯å¦å­˜åœ¨æ ‡è®°ä½
+	Grade gra_new[NUM];//åˆå§‹åŒ–ä¸€ä¸ªæ–°çš„å¯¹è±¡æ•°ç»„ï¼Œä»¥ä¿è¯æ’åºæ—¶ä¸ä¼šè¦†ç›–åŸå¯¹è±¡æ•°ç»„
 	int gra_new_num = 0;
 	for(int n = 0;n < grade_num;n++){
 		if(subject == gra[n].subject){
-			gra_new[gra_new_num] = gra[n];//½«gra¶ÔÏóÊı×éÖĞµÄsubjectÊı¾İÑ­»··ÅÈëgra_newÖĞ,ÕâÑù²»ÓÃ¸Ä±ägra¶ÔÏóÊı×éÊı¾İÎ»ÖÃºÍÖØĞÂ¶ÁÈ¡Ô­txtÎÄ¼ş
+			gra_new[gra_new_num] = gra[n];//å°†graå¯¹è±¡æ•°ç»„ä¸­çš„subjectæ•°æ®å¾ªç¯æ”¾å…¥gra_newä¸­,è¿™æ ·ä¸ç”¨æ”¹å˜graå¯¹è±¡æ•°ç»„æ•°æ®ä½ç½®å’Œé‡æ–°è¯»å–åŸtxtæ–‡ä»¶
 			gra_new_num++;
 			flag = 1;
 		}
 	}
 	if(flag == 1){
-		//gra_new_num - 1ÂÖ±È½Ï
+		//gra_new_num - 1è½®æ¯”è¾ƒ
 		for(int i = 0;i < gra_new_num - 1;i++){
 			int max = i;
 			for(int j = i + 1;j < gra_new_num;j++){
@@ -157,26 +157,26 @@ void ManageGrade::sortStudentByGrade(string subject,Grade *gra,const int NUM){
 					max = j;
 				}
 			}
-			//½«ÕÒµ½µÄ×îĞ¡ÖµºÍiÎ»ÖÃËùÔÚµÄÖµ½øĞĞ½»»»
+			//å°†æ‰¾åˆ°çš„æœ€å°å€¼å’Œiä½ç½®æ‰€åœ¨çš„å€¼è¿›è¡Œäº¤æ¢
 			if(i != max){
 				Grade gra_temp = gra_new[i];
 				gra_new[i] = gra_new[max];
 				gra_new[max] = gra_temp;
 			}
 		}
-		//Ñ­»·±éÀúgra_new¶ÔÏóÊı×é
-		cout<<subject<<"Ñ§¿Æ´Ó´óµ½Ğ¡ÅÅĞòÎª£º"<<endl;
+		//å¾ªç¯éå†gra_newå¯¹è±¡æ•°ç»„
+		cout<<subject<<"å­¦ç§‘ä»å¤§åˆ°å°æ’åºä¸ºï¼š"<<endl;
 		for(int i = 0;i < gra_new_num;i++){
 			cout<<gra_new[i].id<<" "<<gra_new[i].name<<" "<<gra_new[i].subject<<" "<<gra_new[i].grade<<endl;
 		}
 	}else{
-		cout<<subject<<"Ñ§¿Æ²»´æÔÚ£¡"<<endl;
+		cout<<subject<<"å­¦ç§‘ä¸å­˜åœ¨ï¼"<<endl;
 	}
 }
 
 string ManageGrade::compareGrade(string id1,string id2,string name1,string name2,string subject,Grade *gra){
-	string str;//ÓÃÓÚ·µ»Ø±È½Ïºó³É¼¨¸ßÕß
-	int comp1 = -1, comp2 = -1;//Ê¹ÓÃÁ½¸öintÀàĞÍ¼Ç×¡³ÉÔ±Î»ÖÃ
+	string str;//ç”¨äºè¿”å›æ¯”è¾ƒåæˆç»©é«˜è€…
+	int comp1 = -1, comp2 = -1;//ä½¿ç”¨ä¸¤ä¸ªintç±»å‹è®°ä½æˆå‘˜ä½ç½®
 	for(int i = 0;i < grade_num;i++){
 		if(id1 == gra[i].id && subject == gra[i].subject){
 			comp1 = i;
@@ -185,18 +185,18 @@ string ManageGrade::compareGrade(string id1,string id2,string name1,string name2
 		}
 	}
 	if(comp1 == -1 && comp2 != -1){
-		str = "ÊäÈëµÄÑ§ºÅ" + id1 + "³É¼¨²»´æÔÚ£¡";
+		str = "è¾“å…¥çš„å­¦å·" + id1 + "æˆç»©ä¸å­˜åœ¨ï¼";
 	}else if(comp1 != -1 && comp2 == -1){
-		str = "ÊäÈëµÄÑ§ºÅ" + id2 + "³É¼¨²»´æÔÚ£¡";
+		str = "è¾“å…¥çš„å­¦å·" + id2 + "æˆç»©ä¸å­˜åœ¨ï¼";
 	}else if(comp1 == comp2 == -1){
-		str = "ÊäÈëµÄÁ½Ñ§ºÅ" + id1 + "," + id2 + "³É¼¨¾ù²»´æÔÚ£¡";
+		str = "è¾“å…¥çš„ä¸¤å­¦å·" + id1 + "," + id2 + "æˆç»©å‡ä¸å­˜åœ¨ï¼";
 	}else{
 		if(gra[comp1].grade > gra[comp2].grade){
-			str = "³É¼¨¸ßÕßĞÕÃûÎª£º" + name1;
+			str = "æˆç»©é«˜è€…å§“åä¸ºï¼š" + name1;
 		}else if(gra[comp1].grade < gra[comp2].grade){
-			str = "³É¼¨¸ßÕßĞÕÃûÎª£º" + name2;
+			str = "æˆç»©é«˜è€…å§“åä¸ºï¼š" + name2;
 		}else{
-			str = "³É¼¨ÏàÍ¬";
+			str = "æˆç»©ç›¸åŒ";
 		}
 	}
 	return str;
@@ -204,7 +204,7 @@ string ManageGrade::compareGrade(string id1,string id2,string name1,string name2
 
 string ManageGrade::compareGrade(string id1,string id2,int grade1,int grade2,string subject,Grade *gra){
 	string name1,name2,str;
-	int flag1 = 0,flag2 = 0;//±ê¼ÇÎ»
+	int flag1 = 0,flag2 = 0;//æ ‡è®°ä½
 	if(grade1 > grade2){
 		flag1 = 1;
 	}else if(grade1 < grade2){
@@ -215,14 +215,14 @@ string ManageGrade::compareGrade(string id1,string id2,int grade1,int grade2,str
 	for(int i = 0;i < grade_num;i++){
 		if(id1 == gra[i].id && subject == gra[i].subject && flag1 == 1){
 			name1 = gra[i].name;
-			str = "³É¼¨¸ßÕßĞÕÃûÎª£º" + name1;
+			str = "æˆç»©é«˜è€…å§“åä¸ºï¼š" + name1;
 		}else if(id2 == gra[i].id && subject == gra[i].subject && flag2 == 1){
 			name2 = gra[i].name;
-			str = "³É¼¨¸ßÕßĞÕÃûÎª£º" + name2;
+			str = "æˆç»©é«˜è€…å§“åä¸ºï¼š" + name2;
 		}
 	}
 	if(flag1 == flag2 == 1){
-		str = name1 + "£¬" + name2 + "³É¼¨ÏàÍ¬";
+		str = name1 + "ï¼Œ" + name2 + "æˆç»©ç›¸åŒ";
 	}
 	return str;
 }

@@ -1,18 +1,18 @@
-#include <iostream>
+ï»¿#include <iostream>
 #include <string>
 #include<fstream>
 #include "student.h"
 using namespace std;
 
 int student_num;
-const char student_url[100] = "../test/student.txt";//studentÑ§Éú±íÏà¶ÔÂ·¾¶
+const char student_url[100] = "../test/student.txt";//studentå­¦ç”Ÿè¡¨ç›¸å¯¹è·¯å¾„
 
 Student::Student(){
-	//cout<<"StudentÒÑ¹¹Ôì£¡"<<endl;
+	//cout<<"Studentå·²æ„é€ ï¼"<<endl;
 }
 
 Student::~Student(){
-	//cout<<"StudentÒÑÎö¹¹£¡"<<endl;
+	//cout<<"Studentå·²ææ„ï¼"<<endl;
 }
 
 void Student::readFile(Student *stu){
@@ -20,7 +20,7 @@ void Student::readFile(Student *stu){
 	int i = 0,flag = 0;
 	in.open(student_url,ios::in);
 	if(!in){
-		ofstream fout(student_url);//Ã»ÓĞÎÄ¼şÊ±´´½¨ÎÄ¼ş
+		ofstream fout(student_url);//æ²¡æœ‰æ–‡ä»¶æ—¶åˆ›å»ºæ–‡ä»¶
 		if(fout){
 			fout.close();
 			flag = 1;
@@ -28,43 +28,43 @@ void Student::readFile(Student *stu){
 	}
 	if(flag != 1){
 		while(!in.eof() && flag != 1){
-	        in>>stu[i].id>>stu[i].name>>stu[i].sex>>stu[i].age;//ÒÀ´Î¶ÁÈ¡txtÎÄ¼şÖĞÃ¿ĞĞµÄÊı¾İ
+	        in>>stu[i].id>>stu[i].name>>stu[i].sex>>stu[i].age;//ä¾æ¬¡è¯»å–txtæ–‡ä»¶ä¸­æ¯è¡Œçš„æ•°æ®
 	        i++;
 	    }
-	    student_num = i - 1;//¼ÇÂ¼¹ÜÀíÔ±txtÎÄ¼şÖĞĞĞ×ÜÊı£¨¿Õ¸ñÒ²ËãÒ»ĞĞËùÒÔÒª-1£©
+	    student_num = i - 1;//è®°å½•ç®¡ç†å‘˜txtæ–‡ä»¶ä¸­è¡Œæ€»æ•°ï¼ˆç©ºæ ¼ä¹Ÿç®—ä¸€è¡Œæ‰€ä»¥è¦-1ï¼‰
 	}
     in.close();
 }
 
 void Student::showAll(Student *stu){
-	cout<<"Ñ§ºÅ  "<<"ĞÕÃû  "<<"ĞÔ±ğ  "<<"ÄêÁä  "<<endl;
+	cout<<"å­¦å·  "<<"å§“å  "<<"æ€§åˆ«  "<<"å¹´é¾„  "<<endl;
 	for(int i = 0;i < student_num;i++){
 		cout<<stu[i].id<<" "<<stu[i].name<<" "<<stu[i].sex<<" "<<stu[i].age<<endl;
 	}
-	cout<<"Ñ§ÉúÎª£º"<<student_num<<"¸ö"<<endl;
+	cout<<"å­¦ç”Ÿä¸ºï¼š"<<student_num<<"ä¸ª"<<endl;
 }
 
 void Student::showOneStudent(string id,Student *stu){
 	for(int i = 0;i < student_num;i++){
 		if(id == stu[i].id){
-			cout<<"Ñ§ºÅ£º"<<stu[i].id<<"\nĞÕÃû£º"<<stu[i].name<<"\nĞÔ±ğ£º"<<stu[i].sex<<"\nÄêÁä£º"<<stu[i].age<<endl;
+			cout<<"å­¦å·ï¼š"<<stu[i].id<<"\nå§“åï¼š"<<stu[i].name<<"\næ€§åˆ«ï¼š"<<stu[i].sex<<"\nå¹´é¾„ï¼š"<<stu[i].age<<endl;
 		}
 	}
 }
 
 
-/***************************Ñ§Éú¹ÜÀí***************************/
+/***************************å­¦ç”Ÿç®¡ç†***************************/
 
 ManageStudent::ManageStudent(){
-	//cout<<"ManageStudentÒÑ¹¹Ôì£¡"<<endl;
+	//cout<<"ManageStudentå·²æ„é€ ï¼"<<endl;
 }
 
 ManageStudent::~ManageStudent(){
-	//cout<<"ManageStudentÒÑÎö¹¹£¡"<<endl;
+	//cout<<"ManageStudentå·²ææ„ï¼"<<endl;
 }
 void ManageStudent::insertStudent(string id,string name,string sex,int age,Student *stu){
-	//½«Ñ§ÉúĞÅÏ¢·ÅÈëstuÖĞ
-	int flag = 0;//Ñ§ÉúÊÇ·ñ´æÔÚ±ê¼ÇÎ»
+	//å°†å­¦ç”Ÿä¿¡æ¯æ”¾å…¥stuä¸­
+	int flag = 0;//å­¦ç”Ÿæ˜¯å¦å­˜åœ¨æ ‡è®°ä½
 	for(int i = 0;i < student_num;i++){
 		if(id == stu[i].id){
 			flag = 1;
@@ -81,18 +81,18 @@ void ManageStudent::insertStudent(string id,string name,string sex,int age,Stude
 			out<<stu[i].id<<" "<<stu[i].name<<" "<<stu[i].sex<<" "<<stu[i].age<<"\n";
 		}
 		out.close();
-		cout<<"Ñ§ÉúÔö¼Ó³É¹¦£¡"<<endl;
+		cout<<"å­¦ç”Ÿå¢åŠ æˆåŠŸï¼"<<endl;
 		student_num = student_num + 1;
-		cout<<"Ñ§ÉúÎª£º"<<student_num<<"¸ö"<<endl;
+		cout<<"å­¦ç”Ÿä¸ºï¼š"<<student_num<<"ä¸ª"<<endl;
 	}else{
-		cout<<"Ñ§Éú´æÔÚ£¬Ôö¼ÓÊ§°Ü£¡"<<endl;
+		cout<<"å­¦ç”Ÿå­˜åœ¨ï¼Œå¢åŠ å¤±è´¥ï¼"<<endl;
 	}
 	
 }
 
 void ManageStudent::deleteStudent(string id,Student *stu){
-	int flag = 0;//É¾³ı³É¹¦Ê§°Ü±ê¼ÇÎ»
-	cout<<"Ñ§ÉúÎª£º"<<student_num<<"¸ö"<<endl;
+	int flag = 0;//åˆ é™¤æˆåŠŸå¤±è´¥æ ‡è®°ä½
+	cout<<"å­¦ç”Ÿä¸ºï¼š"<<student_num<<"ä¸ª"<<endl;
 	for(int i = 0;i < student_num;i++){
 		if(id == stu[i].id){
 			for(int j = i;j<student_num;j++){
@@ -109,15 +109,15 @@ void ManageStudent::deleteStudent(string id,Student *stu){
 			out<<stu[i].id<<" "<<stu[i].name<<" "<<stu[i].sex<<" "<<stu[i].age<<"\n";
 		}
 		out.close();
-		cout<<"Ñ§ÉúÉ¾³ı³É¹¦£¡"<<endl;
-		cout<<"Ñ§ÉúÎª£º"<<student_num<<"¸ö"<<endl;
+		cout<<"å­¦ç”Ÿåˆ é™¤æˆåŠŸï¼"<<endl;
+		cout<<"å­¦ç”Ÿä¸ºï¼š"<<student_num<<"ä¸ª"<<endl;
 	}else{
-		cout<<"Ñ§ÉúÉ¾³ıÊ§°Ü£¡"<<endl;
+		cout<<"å­¦ç”Ÿåˆ é™¤å¤±è´¥ï¼"<<endl;
 	}
 }
 
 void ManageStudent::updateStudent(string id,string name,string sex,int age,Student *stu){
-	int flag = 0;//¸üĞÂ³É¹¦Ê§°Ü±ê¼ÇÎ»
+	int flag = 0;//æ›´æ–°æˆåŠŸå¤±è´¥æ ‡è®°ä½
 	for(int i = 0;i < student_num;i++){
 		if(id == stu[i].id){
 			stu[i].id = id;
@@ -134,9 +134,9 @@ void ManageStudent::updateStudent(string id,string name,string sex,int age,Stude
 			out<<stu[i].id<<" "<<stu[i].name<<" "<<stu[i].sex<<" "<<stu[i].age<<"\n";
 		}
 		out.close();
-		cout<<"Ñ§Éú¸üĞÂ³É¹¦£¡"<<endl;
+		cout<<"å­¦ç”Ÿæ›´æ–°æˆåŠŸï¼"<<endl;
 	}else{
-		cout<<"Ñ§Éú¸üĞÂÊ§°Ü£¡"<<endl;
+		cout<<"å­¦ç”Ÿæ›´æ–°å¤±è´¥ï¼"<<endl;
 	}
 }
 

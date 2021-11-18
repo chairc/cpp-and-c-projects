@@ -1,4 +1,4 @@
-#ifndef GRADE_H
+ï»¿#ifndef GRADE_H
 #define GRADE_H
 #include <string>
 using namespace std;
@@ -24,7 +24,7 @@ class ManageGrade:public Grade{
 		void deleteGrade(string id,string subject,Grade *gra);
 		void updateGrade(string id,string name,string subject,int grade,Grade *gra);
 		void sortStudentByGrade(string subject,Grade *gra,const int NUM);
-		//º¯ÊıÖØÔØ
+		//å‡½æ•°é‡è½½
 		string compareGrade(string id1,string id2,string name1,string name2,string subject,Grade *gra);
 		string compareGrade(string id1,string id2,int grade1,int grade2,string subject,Grade *gra);
 };

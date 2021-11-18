@@ -1,9 +1,9 @@
-#ifndef PEOPLE_H
+ï»¿#ifndef PEOPLE_H
 #define PEOPLE_H
 #include <string>
 using namespace std;
 
-//¼Ì³ĞÓëÅÉÉú
+//ç»§æ‰¿ä¸æ´¾ç”Ÿ
 class People{
 	private:
 		string id;

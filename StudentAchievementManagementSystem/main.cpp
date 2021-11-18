@@ -1,4 +1,4 @@
-#include <iostream>
+ï»¿#include <iostream>
 #include <string>
 
 #include "student.h"
@@ -8,28 +8,28 @@
 using namespace std;
 
 /*
-1.µÇÂ¼½çÃæ£¨whileÑ­»·£©
-    £¨1£©Ê×ÏÈ½«ÊäÈëµÄµÇÂ¼ÈËÔ±½øĞĞÅĞ¶Ï£¨if£©Ê¹ÓÃ¹ÜÀíÔ±Àà»¹ÊÇ¹¤×÷ÈËÔ±Àà¡¾1Îª¹ÜÀíÔ±   2Îª¹¤×÷ÈËÔ±¡¿
-    £¨2£©½«Ñ¡ÔñµÄ±í£¨txtÎÄ¼ş£©µ÷ÈëÄÚ´æ
-    £¨3£©½«ÓÃ»§Ãû¼°ÃÜÂë½øĞĞ±È¶Ô
-    £¨4£©³É¹¦ºó½øĞĞ²Ù×÷
+1.ç™»å½•ç•Œé¢ï¼ˆwhileå¾ªç¯ï¼‰
+    ï¼ˆ1ï¼‰é¦–å…ˆå°†è¾“å…¥çš„ç™»å½•äººå‘˜è¿›è¡Œåˆ¤æ–­ï¼ˆifï¼‰ä½¿ç”¨ç®¡ç†å‘˜ç±»è¿˜æ˜¯å·¥ä½œäººå‘˜ç±»ã€1ä¸ºç®¡ç†å‘˜   2ä¸ºå·¥ä½œäººå‘˜ã€‘
+    ï¼ˆ2ï¼‰å°†é€‰æ‹©çš„è¡¨ï¼ˆtxtæ–‡ä»¶ï¼‰è°ƒå…¥å†…å­˜
+    ï¼ˆ3ï¼‰å°†ç”¨æˆ·ååŠå¯†ç è¿›è¡Œæ¯”å¯¹
+    ï¼ˆ4ï¼‰æˆåŠŸåè¿›è¡Œæ“ä½œ
     
 */
 
 int main(int argc, char** argv) {
-	//¼òµ¥µÇÂ¼½çÃæ
+	//ç®€å•ç™»å½•ç•Œé¢
 	string username,password,id,name,sex,subject,id1,id2,name1,name2,str;
 	int login_type,select_type,age,subject_grade,case7select_type,subject_grade1,subject_grade2;
-	int flag = 1;//Ñ­»·±êÖ¾Î»£¨ÓÃÓÚÍË³öÄÚÑ­»·£©
+	int flag = 1;//å¾ªç¯æ ‡å¿—ä½ï¼ˆç”¨äºé€€å‡ºå†…å¾ªç¯ï¼‰
 	const int NUM = 100;
 	while(flag == 1){
-		Manager manager;//Éú³É¹ÜÀíÔ±Àà£¬µ÷ÓÃ¹ÜÀíÔ±ÀàÖĞ¶ÁÈ¡ÎÄ¼şµ½ÄÚ´æµÄ·½·¨
+		Manager manager;//ç”Ÿæˆç®¡ç†å‘˜ç±»ï¼Œè°ƒç”¨ç®¡ç†å‘˜ç±»ä¸­è¯»å–æ–‡ä»¶åˆ°å†…å­˜çš„æ–¹æ³•
 		Student student;
 		Grade grade;
 		ManageStudent ms;
 		ManageGrade mg;
 		Worker worker;
-		//³õÊ¼»¯¶ÔÏóÊı×é
+		//åˆå§‹åŒ–å¯¹è±¡æ•°ç»„
 		Manager *man = new Manager[NUM];
 		Worker *wo = new Worker[NUM];
 		Student *stu = new Student[NUM];
@@ -38,35 +38,35 @@ int main(int argc, char** argv) {
 		worker.readFile("worker",wo);
 		student.readFile(stu);
 		grade.readFile(gra);
-		cout<<"»¶Ó­À´µ½¼òµ¥Ñ§Éú¹ÜÀíÏµÍ³"<<endl;
-		cout<<"£¨1£©µÇÂ¼"<<endl;
-		cout<<"£¨0£©ÍË³ö"<<endl;
-		cout<<"ÇëÑ¡Ôñ²Ù×÷£º";
+		cout<<"æ¬¢è¿æ¥åˆ°ç®€å•å­¦ç”Ÿç®¡ç†ç³»ç»Ÿ"<<endl;
+		cout<<"ï¼ˆ1ï¼‰ç™»å½•"<<endl;
+		cout<<"ï¼ˆ0ï¼‰é€€å‡º"<<endl;
+		cout<<"è¯·é€‰æ‹©æ“ä½œï¼š";
 		cin>>select_type;
 		system("cls");
 		switch(select_type){
 			case 1:
-				cout<<"ÇëÊäÈëÕËºÅ£º";
+				cout<<"è¯·è¾“å…¥è´¦å·ï¼š";
 				cin>>username;
-				cout<<"ÇëÊäÈëÃÜÂë£º";
+				cout<<"è¯·è¾“å…¥å¯†ç ï¼š";
 				cin>>password;
-				cout<<"ÇëÊäÈëµÇÂ¼·½Ê½Îª£¨1£©¹ÜÀíÔ±/£¨2£©¹¤×÷ÈËÔ±£º";
+				cout<<"è¯·è¾“å…¥ç™»å½•æ–¹å¼ä¸ºï¼ˆ1ï¼‰ç®¡ç†å‘˜/ï¼ˆ2ï¼‰å·¥ä½œäººå‘˜ï¼š";
 				cin>>login_type;
-				if(login_type == 1){//´Ë´¦Îª¹ÜÀíÔ±µÇÂ¼
+				if(login_type == 1){//æ­¤å¤„ä¸ºç®¡ç†å‘˜ç™»å½•
 					system("cls");
 					flag = 2;
 					if(manager.login(username,password,man)){
-						cout<<"ManagerµÇÂ¼³É¹¦"<<endl;
+						cout<<"Managerç™»å½•æˆåŠŸ"<<endl;
 						while(flag == 2){
-							cout<<"»¶Ó­¹ÜÀíÔ±"<<username<<endl;
-							cout<<"£¨1£© Ñ§ÉúĞÅÏ¢ÏÔÊ¾ "<<"£¨8£© Ñ§Éú³É¼¨Â¼Èë"<<endl;
-							cout<<"£¨2£© Ñ§ÉúĞÅÏ¢Â¼Èë "<<"£¨9£© Ñ§Éú³É¼¨¸ü¸Ä"<<endl;
-							cout<<"£¨3£© Ñ§ÉúĞÅÏ¢¸ü¸Ä "<<"£¨10£©Ñ§Éú³É¼¨É¾³ı"<<endl;
-							cout<<"£¨4£© Ñ§ÉúĞÅÏ¢É¾³ı "<<"£¨11£©¹ÜÀíÔ±ĞÅÏ¢ÏÔÊ¾"<<endl;
-							cout<<"£¨5£© Ñ§Éú³É¼¨ÏÔÊ¾ "<<"£¨12£©¹¤×÷ÈËÔ±ĞÅÏ¢ÏÔÊ¾"<<endl;
-							cout<<"£¨6£© Ñ§Éú³É¼¨ÅÅĞò "<<"£¨0£© ×¢ÏúÕË»§"<<endl;
-							cout<<"£¨7£© Ñ§Éú³É¼¨±È½Ï "<<endl;
-							cout<<"ÄúÒª½øĞĞµÄ²Ù×÷Îª£º";
+							cout<<"æ¬¢è¿ç®¡ç†å‘˜"<<username<<endl;
+							cout<<"ï¼ˆ1ï¼‰ å­¦ç”Ÿä¿¡æ¯æ˜¾ç¤º "<<"ï¼ˆ8ï¼‰ å­¦ç”Ÿæˆç»©å½•å…¥"<<endl;
+							cout<<"ï¼ˆ2ï¼‰ å­¦ç”Ÿä¿¡æ¯å½•å…¥ "<<"ï¼ˆ9ï¼‰ å­¦ç”Ÿæˆç»©æ›´æ”¹"<<endl;
+							cout<<"ï¼ˆ3ï¼‰ å­¦ç”Ÿä¿¡æ¯æ›´æ”¹ "<<"ï¼ˆ10ï¼‰å­¦ç”Ÿæˆç»©åˆ é™¤"<<endl;
+							cout<<"ï¼ˆ4ï¼‰ å­¦ç”Ÿä¿¡æ¯åˆ é™¤ "<<"ï¼ˆ11ï¼‰ç®¡ç†å‘˜ä¿¡æ¯æ˜¾ç¤º"<<endl;
+							cout<<"ï¼ˆ5ï¼‰ å­¦ç”Ÿæˆç»©æ˜¾ç¤º "<<"ï¼ˆ12ï¼‰å·¥ä½œäººå‘˜ä¿¡æ¯æ˜¾ç¤º"<<endl;
+							cout<<"ï¼ˆ6ï¼‰ å­¦ç”Ÿæˆç»©æ’åº "<<"ï¼ˆ0ï¼‰ æ³¨é”€è´¦æˆ·"<<endl;
+							cout<<"ï¼ˆ7ï¼‰ å­¦ç”Ÿæˆç»©æ¯”è¾ƒ "<<endl;
+							cout<<"æ‚¨è¦è¿›è¡Œçš„æ“ä½œä¸ºï¼š";
 							cin>>select_type;
 							system("cls");
 							switch(select_type){
@@ -74,21 +74,21 @@ int main(int argc, char** argv) {
 									student.showAll(stu);
 									break;
 								case 2:
-									cout<<"ÇëÒÀ´ÎÊäÈëÑ§ÉúÑ§ºÅ£¬ĞÕÃû£¬ĞÔ±ğ£¬ÄêÁä"<<endl;
+									cout<<"è¯·ä¾æ¬¡è¾“å…¥å­¦ç”Ÿå­¦å·ï¼Œå§“åï¼Œæ€§åˆ«ï¼Œå¹´é¾„"<<endl;
 									cin>>id>>name>>sex>>age;
 									ms.insertStudent(id,name,sex,age,stu);
 									break;
 								case 3:
-									cout<<"ÇëÊäÈëĞèÒªĞŞ¸ÄµÄÑ§ÉúÑ§ºÅ£º";
+									cout<<"è¯·è¾“å…¥éœ€è¦ä¿®æ”¹çš„å­¦ç”Ÿå­¦å·ï¼š";
 									cin>>id;
-									cout<<"µ±Ç°ĞÅÏ¢Îª£º"<<endl;
+									cout<<"å½“å‰ä¿¡æ¯ä¸ºï¼š"<<endl;
 									student.showOneStudent(id,stu);
-									cout<<"ĞÅÏ¢ĞŞ¸ÄÎª£¨ÒÀ´ÎÊäÈëÑ§ÉúÑ§ºÅ£¬ĞÕÃû£¬ĞÔ±ğ£¬ÄêÁä£©£º";
+									cout<<"ä¿¡æ¯ä¿®æ”¹ä¸ºï¼ˆä¾æ¬¡è¾“å…¥å­¦ç”Ÿå­¦å·ï¼Œå§“åï¼Œæ€§åˆ«ï¼Œå¹´é¾„ï¼‰ï¼š";
 									cin>>id>>name>>sex>>age;
 									ms.updateStudent(id,name,sex,age,stu);
 									break;
 								case 4:
-									cout<<"ÇëÊäÈëĞèÒªÉ¾³ıĞÅÏ¢µÄÑ§ÉúÑ§ºÅ£º";
+									cout<<"è¯·è¾“å…¥éœ€è¦åˆ é™¤ä¿¡æ¯çš„å­¦ç”Ÿå­¦å·ï¼š";
 									cin>>id;
 									ms.deleteStudent(id,stu);
 									break;
@@ -96,44 +96,44 @@ int main(int argc, char** argv) {
 									grade.showAll(gra);
 									break;
 								case 6:
-									cout<<"ÇëÊäÈëÅÅĞò¿ÆÄ¿£º";
+									cout<<"è¯·è¾“å…¥æ’åºç§‘ç›®ï¼š";
 									cin>>subject;
 									mg.sortStudentByGrade(subject,gra,NUM);
 									break;
 								case 7:
 									grade.showAll(gra);
-									cout<<"£¨1£©°´Ñ§ºÅ²éÑ¯±È½Ï £¨2£©°´³É¼¨²éÑ¯±È½Ï"<<endl;
-									cout<<"ÇëÑ¡Ôñ±È½Ï·½Ê½£º";
+									cout<<"ï¼ˆ1ï¼‰æŒ‰å­¦å·æŸ¥è¯¢æ¯”è¾ƒ ï¼ˆ2ï¼‰æŒ‰æˆç»©æŸ¥è¯¢æ¯”è¾ƒ"<<endl;
+									cout<<"è¯·é€‰æ‹©æ¯”è¾ƒæ–¹å¼ï¼š";
 									cin>>case7select_type;
 									if(case7select_type == 1){
-										cout<<"ÇëÒÀ´ÎÊäÈë±È½ÏµÄÑ§ºÅ1£¬Ñ§ºÅ2£¬ĞÕÃû1£¬ĞÕÃû2£¬±È½Ï¿ÆÄ¿£º";
+										cout<<"è¯·ä¾æ¬¡è¾“å…¥æ¯”è¾ƒçš„å­¦å·1ï¼Œå­¦å·2ï¼Œå§“å1ï¼Œå§“å2ï¼Œæ¯”è¾ƒç§‘ç›®ï¼š";
 										cin>>id1>>id2>>name1>>name2>>subject;
 										str = mg.compareGrade(id1,id2,name1,name2,subject,gra);
 									}else if(case7select_type == 2){
-										cout<<"ÇëÒÀ´ÎÊäÈë±È½ÏµÄÑ§ºÅ1£¬Ñ§ºÅ2£¬³É¼¨1£¬³É¼¨2£¬±È½Ï¿ÆÄ¿£º";
+										cout<<"è¯·ä¾æ¬¡è¾“å…¥æ¯”è¾ƒçš„å­¦å·1ï¼Œå­¦å·2ï¼Œæˆç»©1ï¼Œæˆç»©2ï¼Œæ¯”è¾ƒç§‘ç›®ï¼š";
 										cin>>id1>>id2>>subject_grade1>>subject_grade2>>subject;
 										str = mg.compareGrade(id1,id2,subject_grade1,subject_grade2,subject,gra);
 									}else{
-										cout<<"ÊäÈëÖµ·Ç·¨£¡";
+										cout<<"è¾“å…¥å€¼éæ³•ï¼";
 									}
-									cout<<"±È½Ï½á¹ûÎª£º"<<str<<endl;
+									cout<<"æ¯”è¾ƒç»“æœä¸ºï¼š"<<str<<endl;
 									break;
 								case 8:
-									cout<<"ÇëÒÀ´ÎÊäÈëÑ§ÉúÑ§ºÅ£¬ĞÕÃû£¬Ñ§¿Æ£¬³É¼¨"<<endl;
+									cout<<"è¯·ä¾æ¬¡è¾“å…¥å­¦ç”Ÿå­¦å·ï¼Œå§“åï¼Œå­¦ç§‘ï¼Œæˆç»©"<<endl;
 									cin>>id>>name>>subject>>subject_grade;
 									mg.insertGrade(id,name,subject,subject_grade,gra);
 									break;
 								case 9:
-									cout<<"ÇëÊäÈëĞèÒªĞŞ¸ÄµÄÑ§ÉúÑ§ºÅ£º";
+									cout<<"è¯·è¾“å…¥éœ€è¦ä¿®æ”¹çš„å­¦ç”Ÿå­¦å·ï¼š";
 									cin>>id;
-									cout<<"µ±Ç°ĞÅÏ¢Îª£º"<<endl;
+									cout<<"å½“å‰ä¿¡æ¯ä¸ºï¼š"<<endl;
 									grade.showOneStudentGrade(id,gra);
-									cout<<"ĞÅÏ¢ĞŞ¸ÄÎª£¨ÒÀ´ÎÊäÈëÑ§ÉúÑ§ºÅ£¬ĞÕÃû£¬Ñ§¿Æ£¬³É¼¨£©£º";
+									cout<<"ä¿¡æ¯ä¿®æ”¹ä¸ºï¼ˆä¾æ¬¡è¾“å…¥å­¦ç”Ÿå­¦å·ï¼Œå§“åï¼Œå­¦ç§‘ï¼Œæˆç»©ï¼‰ï¼š";
 									cin>>id>>name>>subject>>subject_grade;
 									mg.updateGrade(id,name,subject,subject_grade,gra);
 									break;
 								case 10:
-									cout<<"ÇëÒÀ´ÎÊäÈëĞèÒªÉ¾³ıĞÅÏ¢µÄÑ§ÉúÑ§ºÅºÍÑ§¿Æ£º";
+									cout<<"è¯·ä¾æ¬¡è¾“å…¥éœ€è¦åˆ é™¤ä¿¡æ¯çš„å­¦ç”Ÿå­¦å·å’Œå­¦ç§‘ï¼š";
 									cin>>id>>subject;
 									mg.deleteGrade(id,subject,gra);
 									break;
@@ -153,21 +153,21 @@ int main(int argc, char** argv) {
 							system("cls");
 						}
 					}else{
-						cout<<"ManagerµÇÂ¼Ê§°Ü"<<endl;
+						cout<<"Managerç™»å½•å¤±è´¥"<<endl;
 						flag = 1;
 					}
-				}else if(login_type == 2){//´Ë´¦Îª¹¤×÷ÈËÔ±µÇÂ¼
+				}else if(login_type == 2){//æ­¤å¤„ä¸ºå·¥ä½œäººå‘˜ç™»å½•
 					system("cls");
 					flag = 2;
 					if(worker.login(username,password,wo)){
-						cout<<"WorkerµÇÂ¼³É¹¦"<<endl;
+						cout<<"Workerç™»å½•æˆåŠŸ"<<endl;
 						while(flag ==2){
-							cout<<"»¶Ó­¹¤×÷ÈËÔ±"<<username<<endl;
-							cout<<"£¨1£© Ñ§ÉúĞÅÏ¢ÏÔÊ¾ "<<"£¨5£© Ñ§Éú³É¼¨Â¼Èë"<<endl;
-							cout<<"£¨2£© Ñ§Éú³É¼¨ÏÔÊ¾ "<<"£¨6£© Ñ§Éú³É¼¨¸ü¸Ä"<<endl;
-							cout<<"£¨3£© Ñ§Éú³É¼¨ÅÅĞò "<<"£¨7£© Ñ§Éú³É¼¨É¾³ı"<<endl;
-							cout<<"£¨4£© Ñ§Éú³É¼¨±È½Ï "<<"£¨0£© ×¢ÏúÕË»§"<<endl;
-							cout<<"ÄúÒª½øĞĞµÄ²Ù×÷Îª£º";
+							cout<<"æ¬¢è¿å·¥ä½œäººå‘˜"<<username<<endl;
+							cout<<"ï¼ˆ1ï¼‰ å­¦ç”Ÿä¿¡æ¯æ˜¾ç¤º "<<"ï¼ˆ5ï¼‰ å­¦ç”Ÿæˆç»©å½•å…¥"<<endl;
+							cout<<"ï¼ˆ2ï¼‰ å­¦ç”Ÿæˆç»©æ˜¾ç¤º "<<"ï¼ˆ6ï¼‰ å­¦ç”Ÿæˆç»©æ›´æ”¹"<<endl;
+							cout<<"ï¼ˆ3ï¼‰ å­¦ç”Ÿæˆç»©æ’åº "<<"ï¼ˆ7ï¼‰ å­¦ç”Ÿæˆç»©åˆ é™¤"<<endl;
+							cout<<"ï¼ˆ4ï¼‰ å­¦ç”Ÿæˆç»©æ¯”è¾ƒ "<<"ï¼ˆ0ï¼‰ æ³¨é”€è´¦æˆ·"<<endl;
+							cout<<"æ‚¨è¦è¿›è¡Œçš„æ“ä½œä¸ºï¼š";
 							cin>>select_type;
 							system("cls");
 							switch(select_type){
@@ -178,44 +178,44 @@ int main(int argc, char** argv) {
 									grade.showAll(gra);
 									break;
 								case 3:
-									cout<<"ÇëÊäÈëÅÅĞò¿ÆÄ¿£º";
+									cout<<"è¯·è¾“å…¥æ’åºç§‘ç›®ï¼š";
 									cin>>subject;
 									mg.sortStudentByGrade(subject,gra,NUM);
 									break;
 								case 4:
 									grade.showAll(gra);
-									cout<<"£¨1£©°´Ñ§ºÅ²éÑ¯±È½Ï £¨2£©°´³É¼¨²éÑ¯±È½Ï"<<endl;
-									cout<<"ÇëÑ¡Ôñ±È½Ï·½Ê½£º";
+									cout<<"ï¼ˆ1ï¼‰æŒ‰å­¦å·æŸ¥è¯¢æ¯”è¾ƒ ï¼ˆ2ï¼‰æŒ‰æˆç»©æŸ¥è¯¢æ¯”è¾ƒ"<<endl;
+									cout<<"è¯·é€‰æ‹©æ¯”è¾ƒæ–¹å¼ï¼š";
 									cin>>case7select_type;
 									if(case7select_type == 1){
-										cout<<"ÇëÒÀ´ÎÊäÈë±È½ÏµÄÑ§ºÅ1£¬Ñ§ºÅ2£¬ĞÕÃû1£¬ĞÕÃû2£¬±È½Ï¿ÆÄ¿£º";
+										cout<<"è¯·ä¾æ¬¡è¾“å…¥æ¯”è¾ƒçš„å­¦å·1ï¼Œå­¦å·2ï¼Œå§“å1ï¼Œå§“å2ï¼Œæ¯”è¾ƒç§‘ç›®ï¼š";
 										cin>>id1>>id2>>name1>>name2>>subject;
 										str = mg.compareGrade(id1,id2,name1,name2,subject,gra);
 									}else if(case7select_type == 2){
-										cout<<"ÇëÒÀ´ÎÊäÈë±È½ÏµÄÑ§ºÅ1£¬Ñ§ºÅ2£¬³É¼¨1£¬³É¼¨2£¬±È½Ï¿ÆÄ¿£º";
+										cout<<"è¯·ä¾æ¬¡è¾“å…¥æ¯”è¾ƒçš„å­¦å·1ï¼Œå­¦å·2ï¼Œæˆç»©1ï¼Œæˆç»©2ï¼Œæ¯”è¾ƒç§‘ç›®ï¼š";
 										cin>>id1>>id2>>subject_grade1>>subject_grade2>>subject;
 										str = mg.compareGrade(id1,id2,subject_grade1,subject_grade2,subject,gra);
 									}else{
-										cout<<"ÊäÈëÖµ·Ç·¨£¡";
+										cout<<"è¾“å…¥å€¼éæ³•ï¼";
 									}
-									cout<<"±È½Ï½á¹ûÎª£º"<<str<<endl;
+									cout<<"æ¯”è¾ƒç»“æœä¸ºï¼š"<<str<<endl;
 									break;
 								case 5:
-									cout<<"ÇëÒÀ´ÎÊäÈëÑ§ÉúÑ§ºÅ£¬ĞÕÃû£¬Ñ§¿Æ£¬³É¼¨"<<endl;
+									cout<<"è¯·ä¾æ¬¡è¾“å…¥å­¦ç”Ÿå­¦å·ï¼Œå§“åï¼Œå­¦ç§‘ï¼Œæˆç»©"<<endl;
 									cin>>id>>name>>subject>>subject_grade;
 									mg.insertGrade(id,name,subject,subject_grade,gra);
 									break;
 								case 6:
-									cout<<"ÇëÊäÈëĞèÒªĞŞ¸ÄµÄÑ§ÉúÑ§ºÅ£º";
+									cout<<"è¯·è¾“å…¥éœ€è¦ä¿®æ”¹çš„å­¦ç”Ÿå­¦å·ï¼š";
 									cin>>id;
-									cout<<"µ±Ç°ĞÅÏ¢Îª£º"<<endl;
+									cout<<"å½“å‰ä¿¡æ¯ä¸ºï¼š"<<endl;
 									grade.showOneStudentGrade(id,gra);
-									cout<<"ĞÅÏ¢ĞŞ¸ÄÎª£¨ÒÀ´ÎÊäÈëÑ§ÉúÑ§ºÅ£¬ĞÕÃû£¬Ñ§¿Æ£¬³É¼¨£©£º";
+									cout<<"ä¿¡æ¯ä¿®æ”¹ä¸ºï¼ˆä¾æ¬¡è¾“å…¥å­¦ç”Ÿå­¦å·ï¼Œå§“åï¼Œå­¦ç§‘ï¼Œæˆç»©ï¼‰ï¼š";
 									cin>>id>>name>>subject>>subject_grade;
 									mg.updateGrade(id,name,subject,subject_grade,gra);
 									break;
 								case 7:
-									cout<<"ÇëÒÀ´ÎÊäÈëĞèÒªÉ¾³ıĞÅÏ¢µÄÑ§ÉúÑ§ºÅºÍÑ§¿Æ£º";
+									cout<<"è¯·ä¾æ¬¡è¾“å…¥éœ€è¦åˆ é™¤ä¿¡æ¯çš„å­¦ç”Ÿå­¦å·å’Œå­¦ç§‘ï¼š";
 									cin>>id>>subject;
 									mg.deleteGrade(id,subject,gra);
 									break;
@@ -229,11 +229,11 @@ int main(int argc, char** argv) {
 							system("cls");
 						}
 					}else{
-						cout<<"WorkerµÇÂ¼Ê§°Ü"<<endl;
+						cout<<"Workerç™»å½•å¤±è´¥"<<endl;
 						flag = 1;
 					}
-				}else{//´Ë´¦Îª·Ç·¨×Ö·û
-					cout<<"·Ç·¨×Ö·û£¬µÇÂ¼Ê§°Ü"<<endl;
+				}else{//æ­¤å¤„ä¸ºéæ³•å­—ç¬¦
+					cout<<"éæ³•å­—ç¬¦ï¼Œç™»å½•å¤±è´¥"<<endl;
 					flag = 1;
 				}
 				system("pause");
@@ -242,7 +242,7 @@ int main(int argc, char** argv) {
 			case 0:
 				exit(0);
 			default:
-				cout<<"·Ç·¨×Ö·û£¡"<<endl;
+				cout<<"éæ³•å­—ç¬¦ï¼"<<endl;
 				system("pause");
 				system("cls");
 				break;

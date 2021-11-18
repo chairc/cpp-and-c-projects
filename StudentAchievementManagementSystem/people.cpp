@@ -1,4 +1,4 @@
-#include <iostream>
+ï»¿#include <iostream>
 #include <string>
 #include<fstream>
 #include <string.h>
@@ -16,7 +16,7 @@ People::~People(){
 }
 
 void People::showAll(People *peo){
-	cout<<"ĞòºÅ  "<<"ĞÕÃû  "<<"ÃÜÂë  "<<endl;
+	cout<<"åºå·  "<<"å§“å  "<<"å¯†ç   "<<endl;
 	for(int i = 0;i < people_num;i++){
 		cout<<peo[i].id<<" "<<peo[i].username<<" "<<peo[i].password<<endl;
 	}
@@ -24,13 +24,13 @@ void People::showAll(People *peo){
 
 void People::readFile(string url,People *peo){
 	fstream in;
-	int i = 0,flag = 0;//iÎª¶ÁÈ¡ÎÄ¼şĞĞÊı¼ÇÂ¼
-	string url_str = "../test/" + url + ".txt";//Æ´½ÓÏà¶ÔÂ·¾¶
+	int i = 0,flag = 0;//iä¸ºè¯»å–æ–‡ä»¶è¡Œæ•°è®°å½•
+	string url_str = "../test/" + url + ".txt";//æ‹¼æ¥ç›¸å¯¹è·¯å¾„
     char url_char[100];
     strcpy(url_char,url_str.c_str());
 	in.open(url_char,ios::in);
 	if(!in){
-		ofstream fout(url_char);//Ã»ÓĞÎÄ¼şÊ±´´½¨ÎÄ¼ş
+		ofstream fout(url_char);//æ²¡æœ‰æ–‡ä»¶æ—¶åˆ›å»ºæ–‡ä»¶
 		if(fout){
 			fout.close();
 			flag = 1;
@@ -38,10 +38,10 @@ void People::readFile(string url,People *peo){
 	}
 	if(flag != 1){
 		while(!in.eof() && flag != 1){
-	        in>>peo[i].id>>peo[i].username>>peo[i].password;//ÒÀ´Î¶ÁÈ¡txtÎÄ¼şÖĞÃ¿ĞĞµÄÊı¾İ
+	        in>>peo[i].id>>peo[i].username>>peo[i].password;//ä¾æ¬¡è¯»å–txtæ–‡ä»¶ä¸­æ¯è¡Œçš„æ•°æ®
 	        i++;
     }
-		people_num = i;//¼ÇÂ¼¹ÜÀíÔ±txtÎÄ¼şÖĞĞĞ×ÜÊı
+		people_num = i;//è®°å½•ç®¡ç†å‘˜txtæ–‡ä»¶ä¸­è¡Œæ€»æ•°
 	}
     in.close();
 }
@@ -55,18 +55,18 @@ bool People::login(string username,string password,People *peo){
 	return false;
 }
 
-/***************************¹ÜÀíÔ±¹ÜÀí***************************/
+/***************************ç®¡ç†å‘˜ç®¡ç†***************************/
 
 Manager::Manager(){
-	//cout<<"ManagerÒÑ¹¹Ôì£¡"<<endl;
+	//cout<<"Managerå·²æ„é€ ï¼"<<endl;
 }
 
 Manager::Manager(string username,string password){
-	cout<<"ManagerµÇÂ¼±È¶ÔÖĞ¡£¡£¡£"<<endl;
+	cout<<"Managerç™»å½•æ¯”å¯¹ä¸­ã€‚ã€‚ã€‚"<<endl;
 }
 
 Manager::~Manager(){
-	//cout<<"ManagerÒÑÎö¹¹£¡"<<endl;
+	//cout<<"Managerå·²ææ„ï¼"<<endl;
 }
 
 void Manager::readFile(string url,Manager *man){
@@ -81,18 +81,18 @@ void Manager::showAll(Manager *man){
 	People::showAll(man);
 }
 
-/***************************¹¤×÷ÈËÔ±¹ÜÀí***************************/
+/***************************å·¥ä½œäººå‘˜ç®¡ç†***************************/
 
 Worker::Worker(){
-	//cout<<"WorkerÒÑ¹¹Ôì£¡"<<endl;
+	//cout<<"Workerå·²æ„é€ ï¼"<<endl;
 }
 
 Worker::Worker(string username,string password){
-	cout<<"WorkerµÇÂ¼±È¶ÔÖĞ¡£¡£¡£"<<endl;
+	cout<<"Workerç™»å½•æ¯”å¯¹ä¸­ã€‚ã€‚ã€‚"<<endl;
 }
 
 Worker::~Worker(){
-	//cout<<"WorkerÒÑÎö¹¹£¡"<<endl;
+	//cout<<"Workerå·²ææ„ï¼"<<endl;
 }
 
 void Worker::readFile(string url,Worker *wo){
