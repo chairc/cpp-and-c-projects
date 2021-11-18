@@ -24,13 +24,13 @@ void ReadMedInfo(SqList &L){
 	int i,n=1;
 	FILE *fp;
 	fp=fopen("medicine.txt","r");
-	printf("Ò©Æ·±àºÅ Ò©Æ·Ãû³Æ Ò©Æ·µ¥¼Û Ò©Æ·ÏúÊÛÊıÁ¿ Ò©Æ·ÏúÊÛ¶îÎª£º\n");
+	printf("è¯å“ç¼–å· è¯å“åç§° è¯å“å•ä»· è¯å“é”€å”®æ•°é‡ è¯å“é”€å”®é¢ä¸ºï¼š\n");
 	while(!feof(fp)){
 		fscanf(fp,"%d %s %f %f %f\n",&L.Med[n].Med_id,L.Med[n].Med_name,&L.Med[n].Med_price,&L.Med[n].Med_sell_num,&L.Med[n].Med_sell_price);
 		n++;
 	}
 	mednum=n-1;
-	printf("ÒÑ¶ÁÈ¡%dÌõÊı¾İ\n",n-1);
+	printf("å·²è¯»å–%dæ¡æ•°æ®\n",n-1);
 	fclose(fp);
 }
 
@@ -38,9 +38,9 @@ void SaveMedInfo(SqList &L){
 	int i;
 	FILE *fp;
 	fp=fopen("medicine.txt","w");
-	printf("ÇëÊäÈëÒ©Æ·¸öÊı£º");
+	printf("è¯·è¾“å…¥è¯å“ä¸ªæ•°ï¼š");
 	scanf("%d",&mednum);
-	printf("ÇëÒÀ´ÎÊäÈëÒ©Æ·±àºÅ Ò©Æ·Ãû³Æ Ò©Æ·µ¥¼Û Ò©Æ·ÏúÊÛÊıÁ¿£º\n");
+	printf("è¯·ä¾æ¬¡è¾“å…¥è¯å“ç¼–å· è¯å“åç§° è¯å“å•ä»· è¯å“é”€å”®æ•°é‡ï¼š\n");
 	for(i=1;i<=mednum;i++){
 		scanf("%d %s %f %f",&L.Med[i].Med_id,L.Med[i].Med_name,&L.Med[i].Med_price,&L.Med[i].Med_sell_num);
 		L.Med[i].Med_sell_price=L.Med[i].Med_price*L.Med[i].Med_sell_num;
@@ -55,23 +55,23 @@ void SearchMedOneOfInfo(SqList &L,int switchcase){
 	FILE *fp;
 	int updateid;
 	
-	printf("ÇëÑ¡ÔñĞèÒª¸üĞÂµÄÒ©Æ·±àºÅ£º");
+	printf("è¯·é€‰æ‹©éœ€è¦æ›´æ–°çš„è¯å“ç¼–å·ï¼š");
 	scanf("%d",&updateid);
 	for(i=1;i<=mednum;i++){
 		if(L.Med[i].Med_id==updateid){
 			fp=fopen("medicine.txt","w");
 			if(switchcase==1){
-				printf("ÇëÊäÈëÒª¸üĞÂµÄµ¥¼Û£º");
+				printf("è¯·è¾“å…¥è¦æ›´æ–°çš„å•ä»·ï¼š");
 				scanf("%f",&L.Med[i].Med_price);
 				L.Med[i].Med_sell_price=L.Med[i].Med_price*L.Med[i].Med_sell_num;
 			}else if(switchcase==2){
 				float addnum;
-				printf("ÇëÊäÈëÒªÔö¼Ó¶àÉÙÏúÊÛÊıÁ¿£º");
+				printf("è¯·è¾“å…¥è¦å¢åŠ å¤šå°‘é”€å”®æ•°é‡ï¼š");
 				scanf("%f",&addnum);
 				L.Med[i].Med_sell_num+=addnum;
 				L.Med[i].Med_sell_price=L.Med[i].Med_price*L.Med[i].Med_sell_num;
 			}else{
-				printf("Ñ¡ÔñÓĞÎó£¡ÖØĞÂÑ¡Ôñ£¡");
+				printf("é€‰æ‹©æœ‰è¯¯ï¼é‡æ–°é€‰æ‹©ï¼");
 				return;
 			}
 			for(j=1;j<=mednum;j++){
@@ -120,20 +120,20 @@ void SellNumAjust(SqList &L,int s,int m){
 		L.Med[s]=L.Med[j];
 		s=j;
 	}
-	L.Med[s]=L.Med[0];		//²åÈë²Ù×÷ 
+	L.Med[s]=L.Med[0];		//æ’å…¥æ“ä½œ 
 }
 
 void SellNumSort(SqList &L){
 	int i;
 	Medicine temp;
-	for(i=mednum/2;i>0;i--){	//½¨Á¢³õÊ¼¶Ñ 
+	for(i=mednum/2;i>0;i--){	//å»ºç«‹åˆå§‹å † 
 		SellNumAjust(L,i,mednum);
 	}
-	for(i=mednum;i>1;i--){	//¶ÑµÄÊä³öºÍµ÷Õû 
-		temp=L.Med[1];		//¶Ñ¶¥Óë×îºóÒ»¸ö¼ÇÂ¼½»»» 
+	for(i=mednum;i>1;i--){	//å †çš„è¾“å‡ºå’Œè°ƒæ•´ 
+		temp=L.Med[1];		//å †é¡¶ä¸æœ€åä¸€ä¸ªè®°å½•äº¤æ¢ 
 		L.Med[1]=L.Med[i];
 		L.Med[i]=temp;
-		SellNumAjust(L,1,i-1);	//½«L.Med[1]µ½L.Med[i-1]ÖØĞÂµ÷ÕûÎª¶Ñ 
+		SellNumAjust(L,1,i-1);	//å°†L.Med[1]åˆ°L.Med[i-1]é‡æ–°è°ƒæ•´ä¸ºå † 
 	}
 }
 
@@ -141,12 +141,12 @@ void SellPriceSort(SqList &L){
 	int i,j;
 	for(i=2;i<=mednum;i++){
 		if(L.Med[i].Med_sell_price>L.Med[i-1].Med_sell_price){
-			L.Med[0]=L.Med[i];  //µÚiÎ»ÖÃ×÷ÎªÉÚ±ø·ÅÈë0Î»ÖÃÖĞ
+			L.Med[0]=L.Med[i];  //ç¬¬iä½ç½®ä½œä¸ºå“¨å…µæ”¾å…¥0ä½ç½®ä¸­
 			L.Med[i]=L.Med[i-1];
 			for(j=i-2;L.Med[0].Med_sell_price>L.Med[j].Med_sell_price;j--){
 				L.Med[j+1]=L.Med[j];
 			}
-			L.Med[j+1]=L.Med[0];	//²åÈë¼ÇÂ¼
+			L.Med[j+1]=L.Med[0];	//æ’å…¥è®°å½•
 		}
 	}
 }
@@ -156,12 +156,12 @@ int main(){
 	int switchnum=-1;
 	int switchcase=0;	
 	while(switchnum!=0){
-		printf("»¶Ó­À´µ½Ò©Æ·ÏúÊÛÍ³¼ÆÏµÍ³£º\n£¨1£©´´½¨ÏúÊÛĞÅÏ¢\n£¨2£©¶ÁÈ¡ÏúÊÛĞÅÏ¢\n£¨3£©ÅÅĞòÏúÊÛĞÅÏ¢\n£¨4£©¸üĞÂÏúÊÛĞÅÏ¢\n£¨0£©ÍË³ö\n");
-		printf("ÇëÊäÈëÑ¡ÔñµÄĞòºÅ£º");
+		printf("æ¬¢è¿æ¥åˆ°è¯å“é”€å”®ç»Ÿè®¡ç³»ç»Ÿï¼š\nï¼ˆ1ï¼‰åˆ›å»ºé”€å”®ä¿¡æ¯\nï¼ˆ2ï¼‰è¯»å–é”€å”®ä¿¡æ¯\nï¼ˆ3ï¼‰æ’åºé”€å”®ä¿¡æ¯\nï¼ˆ4ï¼‰æ›´æ–°é”€å”®ä¿¡æ¯\nï¼ˆ0ï¼‰é€€å‡º\n");
+		printf("è¯·è¾“å…¥é€‰æ‹©çš„åºå·ï¼š");
 		scanf("%d",&switchnum);
 		switch(switchnum){
 			case 1:
-				printf("ÊÇ·ñ´´½¨Êı¾İ£¬ÊÇÇëÊäÈë1£¬²»ÊÇÇëÊäÈë0£¨×¢Òâ£º´ËÑ¡ÏîĞ´ÈëÊı¾İÊ±½«¸²¸ÇÎÄ¼ş£¡£¡£©\n");
+				printf("æ˜¯å¦åˆ›å»ºæ•°æ®ï¼Œæ˜¯è¯·è¾“å…¥1ï¼Œä¸æ˜¯è¯·è¾“å…¥0ï¼ˆæ³¨æ„ï¼šæ­¤é€‰é¡¹å†™å…¥æ•°æ®æ—¶å°†è¦†ç›–æ–‡ä»¶ï¼ï¼ï¼‰\n");
 				scanf("%d",&switchcase);
 				if(switchcase==1){
 				SaveMedInfo(L);
@@ -175,7 +175,7 @@ int main(){
 				break;
 			case 3:
 				ReadMedInfo(L);
-				printf("ÇëÑ¡ÔñÅÅĞò·½Ê½£º£¨1£©°´µ¥¼ÛÅÅĞò£¨2£©°´ÏúÊÛÊıÁ¿ÅÅĞò£¨3£©°´ÏúÊÛ¶îÅÅĞò£¨0£©·µ»ØÉÏÒ»²½\n");
+				printf("è¯·é€‰æ‹©æ’åºæ–¹å¼ï¼šï¼ˆ1ï¼‰æŒ‰å•ä»·æ’åºï¼ˆ2ï¼‰æŒ‰é”€å”®æ•°é‡æ’åºï¼ˆ3ï¼‰æŒ‰é”€å”®é¢æ’åºï¼ˆ0ï¼‰è¿”å›ä¸Šä¸€æ­¥\n");
 				scanf("%d",&switchcase);
 				if(switchcase!=0){
 					if(switchcase==1){
@@ -193,7 +193,7 @@ int main(){
 				break;
 			case 4:
 				ReadMedInfo(L);
-				printf("Ñ¡Ôñ¸üĞÂµÄÀàĞÍ£º£¨1£©µ¥¼Û¸üĞÂ£¨2£©ÏúÊÛÊıÁ¿¸üĞÂ£¨0£©·µ»ØÉÏÒ»²½\n");
+				printf("é€‰æ‹©æ›´æ–°çš„ç±»å‹ï¼šï¼ˆ1ï¼‰å•ä»·æ›´æ–°ï¼ˆ2ï¼‰é”€å”®æ•°é‡æ›´æ–°ï¼ˆ0ï¼‰è¿”å›ä¸Šä¸€æ­¥\n");
 				scanf("%d",&switchcase);
 				if(switchcase!=0){
 					SearchMedOneOfInfo(L,switchcase);
@@ -202,7 +202,7 @@ int main(){
 			case 0:
 				exit(0);
 			default:
-				printf("ÊäÈëĞòºÅÓĞÎó£¡ÇëÖØĞÂÊäÈë£¡"); 
+				printf("è¾“å…¥åºå·æœ‰è¯¯ï¼è¯·é‡æ–°è¾“å…¥ï¼"); 
 		}
 	}
 
