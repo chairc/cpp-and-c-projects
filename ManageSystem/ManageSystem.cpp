@@ -17,13 +17,13 @@ typedef struct{
 	//int length;
 }SqList;
 
-int stdnum=0;   //ÓÃÓÚ¶ÁÈ¡Êı¾İÊ±¼ÇÂ¼×ÜÊıµÄ¼ÆÊ±Æ÷
+int stdnum=0;   //ç”¨äºè¯»å–æ•°æ®æ—¶è®°å½•æ€»æ•°çš„è®¡æ—¶å™¨
 
 void ReadStuInfo(SqList &L){
 	int i,n=0;
 	FILE *fp;
 	fp=fopen("student.txt","r");
-	printf("Ñ§ÉúÑ§ºÅ ĞÕÃû ÄêÁä µç»° ¼®¹áÎª£º\n");
+	printf("å­¦ç”Ÿå­¦å· å§“å å¹´é¾„ ç”µè¯ ç±è´¯ä¸ºï¼š\n");
 	while(!feof(fp)){
 		fscanf(fp,"%d %s %d %s %s\n",&L.Stu[n].id,L.Stu[n].name,&L.Stu[n].age,L.Stu[n].phone,L.Stu[n].native);
 		n++;
@@ -36,9 +36,9 @@ void SaveStuInfo(SqList &L){
 	int i;
 	FILE *fp;
 	fp=fopen("student.txt","w");
-	printf("ÇëÊäÈëÑ§Éú¸öÊı£º");
+	printf("è¯·è¾“å…¥å­¦ç”Ÿä¸ªæ•°ï¼š");
 	scanf("%d",&stdnum);
-	printf("ÇëÒÀ´ÎÊäÈëÑ§ÉúÑ§ºÅ ĞÕÃû ÄêÁä µç»° ¼®¹á£º\n");
+	printf("è¯·ä¾æ¬¡è¾“å…¥å­¦ç”Ÿå­¦å· å§“å å¹´é¾„ ç”µè¯ ç±è´¯ï¼š\n");
 	for(i=0;i<stdnum;i++){
 		scanf("%d %s %d %s %s",&L.Stu[i].id,L.Stu[i].name,&L.Stu[i].age,L.Stu[i].phone,L.Stu[i].native);
 		fprintf(fp,"%d %s %d %s %s\n",L.Stu[i].id,L.Stu[i].name,L.Stu[i].age,L.Stu[i].phone,L.Stu[i].native);
@@ -50,7 +50,7 @@ void InsertStuInfo(SqList &L){
 	int addstdnum,i;
 	FILE *fp;
 	fp=fopen("student.txt","a");
-	printf("ÇëÊäÈëÔö¼ÓÑ§Éú¸öÊı£º");
+	printf("è¯·è¾“å…¥å¢åŠ å­¦ç”Ÿä¸ªæ•°ï¼š");
 	scanf("%d",&addstdnum);
 	for(i=0;i<addstdnum;i++){
 		scanf("%d %s %d %s %s",&L.Stu[i].id,L.Stu[i].name,&L.Stu[i].age,L.Stu[i].phone,L.Stu[i].native);
@@ -61,7 +61,7 @@ void InsertStuInfo(SqList &L){
 
 void DeleteStuInfo(SqList &L){
 	int searchid,i,j;
-	printf("ÇëÊäÈëÉ¾³ıÑ§ÉúĞÅÏ¢µÄÑ§ºÅ£º\n");
+	printf("è¯·è¾“å…¥åˆ é™¤å­¦ç”Ÿä¿¡æ¯çš„å­¦å·ï¼š\n");
 	scanf("%d",&searchid);
 	for(i=0;i<stdnum;i++){
 		if(L.Stu[i].id==searchid){
@@ -96,12 +96,12 @@ int main() {
 	int switchnum=-1;
 	int switchcase=0;	
 	while(switchnum!=0){
-		printf("»¶Ó­À´µ½°à¼¶¹ÜÀíÏµÍ³£º\n£¨1£©Ğ´ÈëÑ§ÉúĞÅÏ¢\n£¨2£©¶ÁÈ¡Ñ§ÉúĞÅÏ¢\n£¨3£©²åÈëÍ¬Ñ§ĞÅÏ¢\n£¨4£©É¾³ıÍ¬Ñ§ĞÅÏ¢\n£¨0£©ÍË³ö\n");
-		printf("ÇëÊäÈëÑ¡ÔñµÄĞòºÅ£º");
+		printf("æ¬¢è¿æ¥åˆ°ç­çº§ç®¡ç†ç³»ç»Ÿï¼š\nï¼ˆ1ï¼‰å†™å…¥å­¦ç”Ÿä¿¡æ¯\nï¼ˆ2ï¼‰è¯»å–å­¦ç”Ÿä¿¡æ¯\nï¼ˆ3ï¼‰æ’å…¥åŒå­¦ä¿¡æ¯\nï¼ˆ4ï¼‰åˆ é™¤åŒå­¦ä¿¡æ¯\nï¼ˆ0ï¼‰é€€å‡º\n");
+		printf("è¯·è¾“å…¥é€‰æ‹©çš„åºå·ï¼š");
 		scanf("%d",&switchnum);
 		switch(switchnum){
 			case 1:
-				printf("ÊÇ·ñĞ´ÈëÊı¾İ£¬ÊÇÇëÊäÈë1£¬²»ÊÇÇëÊäÈë0£¨×¢Òâ£º´ËÑ¡ÏîĞ´ÈëÊı¾İÊ±½«¸²¸ÇÎÄ¼ş£¡£¡£©\n");
+				printf("æ˜¯å¦å†™å…¥æ•°æ®ï¼Œæ˜¯è¯·è¾“å…¥1ï¼Œä¸æ˜¯è¯·è¾“å…¥0ï¼ˆæ³¨æ„ï¼šæ­¤é€‰é¡¹å†™å…¥æ•°æ®æ—¶å°†è¦†ç›–æ–‡ä»¶ï¼ï¼ï¼‰\n");
 				scanf("%d",&switchcase);
 				if(switchcase==1){
 					SaveStuInfo(L);
@@ -114,7 +114,7 @@ int main() {
 				PrintfStuInfo(L);
 				break;
 			case 3:
-				printf("ÊÇ·ñ²åÈëÊı¾İ£¬ÊÇÇëÊäÈë1£¬²»ÊÇÇëÊäÈë0\n");
+				printf("æ˜¯å¦æ’å…¥æ•°æ®ï¼Œæ˜¯è¯·è¾“å…¥1ï¼Œä¸æ˜¯è¯·è¾“å…¥0\n");
 				scanf("%d",&switchcase);
 				if(switchcase==1){
 					ReadStuInfo(L);
@@ -123,7 +123,7 @@ int main() {
 				switchcase=0; 	
 				break;
 			case 4:
-				printf("ÊÇ·ñÉ¾³ıÊı¾İ£¬ÊÇÇëÊäÈë1£¬²»ÊÇÇëÊäÈë0\n");
+				printf("æ˜¯å¦åˆ é™¤æ•°æ®ï¼Œæ˜¯è¯·è¾“å…¥1ï¼Œä¸æ˜¯è¯·è¾“å…¥0\n");
 				scanf("%d",&switchcase);
 				if(switchcase==1){
 					ReadStuInfo(L);
@@ -134,7 +134,7 @@ int main() {
 			case 0:
 				exit(0);
 			default:
-				printf("ÊäÈëĞòºÅÓĞÎó£¡ÇëÖØĞÂÊäÈë£¡"); 
+				printf("è¾“å…¥åºå·æœ‰è¯¯ï¼è¯·é‡æ–°è¾“å…¥ï¼"); 
 		}
 	}
 	return 0;
